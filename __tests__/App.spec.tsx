@@ -1,7 +1,8 @@
 import { render } from "@testing-library/react";
 import App from "../src/App";
 
-test("sum", () => {
-  const { getByText } = render(<App />);
-  expect(getByText("Hello World")).toBeTruthy();
+test("Canvas should be rendered", () => {
+  const { getByTestId } = render(<App />);
+  const canvasElement = getByTestId("Exp");
+  expect(canvasElement).toBeTruthy();
 });
