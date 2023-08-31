@@ -37,6 +37,7 @@ type GLTFResult = GLTF & {
 };
 
 export function Avatar(props: JSX.IntrinsicElements["group"] | any) {
+  const { animation } = props;
   const { nodes, materials } = useGLTF("models/Avatar.glb") as GLTFResult;
   const { headFollow, cursorFollow } = useControls({
     headFollow: false,
@@ -51,11 +52,17 @@ export function Avatar(props: JSX.IntrinsicElements["group"] | any) {
   danceAnimation[0].name = "Dance";
   standingAnimation[0].name = "Idle";
 
-  const { actions } = useAnimations(standingAnimation, group);
+  const { actions } = useAnimations(
+    [standingAnimation[0], danceAnimation[0]],
+    group
+  );
 
   useEffect(() => {
-    actions["Idle"]?.reset().play();
-  }, []);
+    actions[animation]?.reset().play();
+    return () => {
+      actions[animation]?.reset().fadeOut(0.5);
+    };
+  }, [animation]);
 
   useFrame((state) => {
     if (headFollow) {

@@ -1,16 +1,14 @@
 import { ContactShadows, Environment, OrbitControls } from "@react-three/drei";
 import { Avatar } from "./3D/Avatar";
-import { useEffect, useState } from "react";
+import { useControls } from "leva";
 export const Experience = () => {
-  const [animation, setAnimation] = useState("Dance");
+  const { animation }: any = useControls({
+    animation: {
+      value: "Idle",
+      options: ["Idle", "Dance"],
+    },
+  });
 
-  useEffect(() => {
-    const timeOut = setTimeout(() => {
-      setAnimation("Idle");
-
-      return () => clearTimeout(timeOut);
-    }, 5000);
-  }, []);
   return (
     <>
       <group position={[0, -2.5, 0]}>
