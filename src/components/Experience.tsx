@@ -12,10 +12,10 @@ export const Experience = () => {
   return (
     <>
       <group position={[0, -2.5, 0]}>
-        <OrbitControls
+        {/* <OrbitControls
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 2.5}
-        />
+        /> */}
         <ContactShadows
           opacity={1}
           scale={10}
