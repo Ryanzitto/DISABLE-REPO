@@ -39,11 +39,11 @@ type GLTFResult = GLTF & {
 export function Avatar(props: JSX.IntrinsicElements["group"] | any) {
   const { animation } = props;
   const { nodes, materials } = useGLTF("models/Avatar.glb") as GLTFResult;
+  const group = useRef(null);
   const { headFollow, cursorFollow } = useControls({
     headFollow: false,
     cursorFollow: false,
   });
-  const group = useRef(null);
 
   const { animations: danceAnimation } = useFBX("animations/Dance.fbx");
 
