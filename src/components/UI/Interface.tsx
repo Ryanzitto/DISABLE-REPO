@@ -93,7 +93,6 @@ const AboutSection = () => {
             </motion.div>
           </div>
         </motion.div>
-        {/* ??????????????????????????????????? */}
         <motion.div
           whileInView={"visible"}
           initial={{
@@ -141,10 +140,39 @@ const AboutSection = () => {
           >
             <p>
               Há cerca de 10 meses eu venho estudando e me dedicando aos estudos
-              de programação, sempre aplicando em projetos pessoais os conceitos
-              aprendidos. possuo habilidades no Frontend e conhecimentos básicos
-              de Backend.
+              de programação 🧑‍💻, sempre aplicando em projetos pessoais os
+              conceitos aprendidos. possuo habilidades no Frontend e
+              conhecimentos básicos de Backend.
             </p>
+            <motion.div className="w-full h-full flex flex-col items-center justify-center gap-4 text-sm font-extrabold">
+              <motion.button
+                whileHover={{
+                  x: 5,
+                  transition: { duration: 0.5 },
+                }}
+                className="bg-white p-2 text-zinc-700 rounded-md flex gap-2 tracking-wide justify-center items-center"
+              >
+                <a href="https://github.com/Ryanzitto/" target="blank">
+                  VIEW MY GITHUB
+                </a>
+                <img className="w-6 opacity-80" src="images/github.png" />
+              </motion.button>
+              <motion.button
+                whileHover={{
+                  x: 5,
+                  transition: { duration: 0.5 },
+                }}
+                className="bg-white p-2 text-zinc-700 rounded-md flex gap-2 tracking-wide justify-center items-center"
+              >
+                <a
+                  href="https://www.linkedin.com/in/ryan-henrique-1b4075233/"
+                  target="blank"
+                >
+                  VIEW MY LINKEDIN
+                </a>
+                <img className="w-6 opacity-80" src="images/linkedin.png" />
+              </motion.button>
+            </motion.div>
           </motion.div>
         </motion.div>
       </div>
