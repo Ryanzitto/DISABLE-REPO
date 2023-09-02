@@ -1,6 +1,7 @@
 import { ContactShadows, Environment, OrbitControls } from "@react-three/drei";
 import { Avatar } from "./3D/Avatar";
 import { useControls } from "leva";
+import { Color } from "three";
 export const Experience = () => {
   const { animation }: any = useControls({
     animation: {
@@ -18,7 +19,7 @@ export const Experience = () => {
         /> */}
         <ContactShadows
           opacity={1}
-          scale={10}
+          scale={20}
           blur={1}
           far={10}
           resolution={256}

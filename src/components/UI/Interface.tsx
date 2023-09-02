@@ -2,7 +2,7 @@ const Section = (props: any) => {
   const { children } = props;
 
   return (
-    <section className="h-screen w-screen p-8 max-w-screen-2xl mx-auto flex flex-col items-start justify-center">
+    <section className="h-screen w-screen max-w-screen-2xl mx-auto flex flex-col items-start justify-center">
       {children}
     </section>
   );
@@ -11,12 +11,41 @@ const Section = (props: any) => {
 const AboutSection = () => {
   return (
     <Section>
-      <h1 className="text-6xl font-extrabold leading-snug">Hi, I'm</h1>
-      <br />
-      <span className="bg-white px-1 italic">Ryan Henrique</span>
-      <p className="text-lg text,gray-600 mt-4">
-        eu estudo programação e to tentando conquistar uma menina aí
-      </p>
+      <div className="w-screen h-screen">
+        <header className="h-32 w-full flex justify-start items-end text-white font-black text-lg">
+          <div className="flex flex-col justify-center pl-14">
+            <span>👋 OLÁ, EU SOU</span>
+            <span>RYAN HENRIQUE</span>
+          </div>
+        </header>
+        <div className="w-full h-full flex flex-col justify-start pl-10 pt-8">
+          <div className="flex w-fit h-fit justify-center flex-col text-6xl text-white font-black gap-2">
+            <div className="italic ml-2">
+              <h1>DESENVOLVEDOR</h1>
+            </div>
+            <div className="flex gap-6">
+              <div className="italic">
+                <h1>WEB</h1>
+              </div>
+              <div>
+                <h1 className="text-[#B30DEE] tracking-wide">FRONT-END</h1>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col gap-6 ml-2 text-lg w-[40%] text-white font-medium pt-8">
+            <p>
+              Sou um jovem desenvolvedor muito criativo, interessado em criar
+              experiências de usuario incríveis, agradáveis, escaláveis <br />e
+              performáticas. Busco o crescimento profissional e pessoal.
+            </p>
+            <p>
+              possuo habilidade de adaptabilidade, comunicação clara,
+              <br /> e uma intensa vontade de aprender.
+            </p>
+            <p>Que tal trabalharmos juntos? 😄</p>
+          </div>
+        </div>
+      </div>
     </Section>
   );
 };

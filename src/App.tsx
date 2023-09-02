@@ -6,6 +6,7 @@ import { Interface } from "./components/UI/Interface";
 function App() {
   return (
     <Canvas>
+      <color attach="background" args={["#161616"]} />
       <ScrollControls pages={3} damping={0.1}>
         <Experience />
         <Scroll html>
