@@ -29,28 +29,36 @@ const AboutSection = () => {
               opacity: 1,
               transition: {
                 duration: 1,
-                delay: 0.5,
+                delay: 0,
               },
             },
           }}
           className="w-1/2 h-screen"
         >
-          <header className="h-32 w-full flex justify-start items-end text-white font-black text-lg">
+          <motion.header
+            initial={{ x: -250 }}
+            whileInView={{ x: 0 }}
+            transition={{
+              duration: 1,
+              delay: 0,
+            }}
+            className="h-32 w-full flex justify-start items-end text-white font-black text-lg"
+          >
             <div className="flex flex-col justify-center pl-14">
               <span>👋 OLÁ, EU SOU</span>
               <span>RYAN HENRIQUE</span>
             </div>
-          </header>
-          <motion.div
-            initial={{ opacity: 0, x: -200 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{
-              duration: 1,
-              delay: 1,
-            }}
-            className="w-full h-full flex flex-col justify-start pl-10 pt-8"
-          >
-            <div className="flex w-fit h-fit justify-center flex-col text-6xl text-white font-black gap-2">
+          </motion.header>
+          <div className="w-full h-full flex flex-col justify-start pl-10 pt-8">
+            <motion.div
+              initial={{ x: -250 }}
+              whileInView={{ x: 0 }}
+              transition={{
+                duration: 1,
+                delay: 0,
+              }}
+              className="flex w-fit h-fit justify-center flex-col text-6xl text-white font-black gap-2"
+            >
               <div className="italic ml-2">
                 <h1>DESENVOLVEDOR</h1>
               </div>
@@ -62,8 +70,16 @@ const AboutSection = () => {
                   <h1 className="text-[#B30DEE] tracking-wide">FRONT-END</h1>
                 </div>
               </div>
-            </div>
-            <div className="flex flex-col gap-6 ml-2 text-lg  text-white font-medium pt-8">
+            </motion.div>
+            <motion.div
+              initial={{ x: -250 }}
+              whileInView={{ x: 0 }}
+              transition={{
+                duration: 1,
+                delay: 0,
+              }}
+              className="flex flex-col gap-6 ml-2 text-lg  text-white font-medium pt-8"
+            >
               <p>
                 Sou um jovem desenvolvedor muito criativo, interessado em criar
                 experiências de usuario incríveis, agradáveis, escaláveis <br />
@@ -74,11 +90,35 @@ const AboutSection = () => {
                 <br /> e uma intensa vontade de aprender.
               </p>
               <p>Que tal trabalharmos juntos? 😄</p>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </motion.div>
-        <motion.div className="h-screen w-1/2 flex flex-col items-center">
-          <div className="w-full h-32 flex  items-center justify-end text-lg font-black text-white pt-10 pr-20 gap-2">
+        {/* ??????????????????????????????????? */}
+        <motion.div
+          whileInView={"visible"}
+          initial={{
+            opacity: 0,
+          }}
+          variants={{
+            visible: {
+              opacity: 1,
+              transition: {
+                duration: 1,
+                delay: 0,
+              },
+            },
+          }}
+          className="h-screen w-1/2 flex flex-col items-center"
+        >
+          <motion.div
+            initial={{ opacity: 0, x: 200 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{
+              duration: 1,
+              delay: 0,
+            }}
+            className="w-full h-32 flex  items-center justify-end text-lg font-black text-white pt-10 pr-20 gap-2"
+          >
             <img
               onClick={like}
               className="w-6 h-6 cursor-pointer"
@@ -89,15 +129,23 @@ const AboutSection = () => {
               }
             />
             <span>432 LIKES</span>
-          </div>
-          <div className="w-[80%] text-white font-medium text-center text-lg pt-10">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 200 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{
+              duration: 1,
+              delay: 0,
+            }}
+            className="w-[80%] text-white font-medium text-center text-lg pt-10"
+          >
             <p>
               Há cerca de 10 meses eu venho estudando e me dedicando aos estudos
               de programação, sempre aplicando em projetos pessoais os conceitos
               aprendidos. possuo habilidades no Frontend e conhecimentos básicos
               de Backend.
             </p>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </Section>
