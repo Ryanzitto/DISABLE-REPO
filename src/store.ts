@@ -4,7 +4,7 @@ import { persist, createJSONStorage } from "zustand/middleware";
 export const useStoreApp = create(
   persist(
     (set) => ({
-      color: "",
+      color: "#B922E2",
       setColor: (payload: string) => set({ color: payload }),
     }),
     {

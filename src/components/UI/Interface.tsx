@@ -125,6 +125,7 @@ const AboutSection = () => {
               </div>
             </motion.div>
             <motion.div
+              data-testid={"about1"}
               initial={{ x: -250 }}
               whileInView={{ x: 0 }}
               transition={{
@@ -169,24 +170,15 @@ const AboutSection = () => {
               duration: 1,
               delay: 0,
             }}
-            className="w-full h-32 flex  items-center justify-end text-lg font-black text-white pt-10 pr-20 gap-2"
+            className="w-full h-32 flex  items-center justify-end text-lg font-black text-white pt-10 pr-20 gap-10"
           >
-            <img
-              onClick={like}
-              className="w-6 h-6 cursor-pointer"
-              src={
-                likeIsClicked === false
-                  ? "images/heart.png"
-                  : "images/heart-filled.png"
-              }
-            />
-            <span>432 LIKES</span>
             <input
+              data-testid={"input-color"}
+              className="w-6 h-6 border-0 bg-transparent cursor-pointer class"
               type="color"
               value={color}
               onChange={(e) => setColor(e.target.value)}
             />
-            <p>{color}</p>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 200 }}
@@ -197,13 +189,13 @@ const AboutSection = () => {
             }}
             className="w-[80%] text-white font-medium text-center text-lg pt-10"
           >
-            <p>
+            <p data-testid={"about2"}>
               Há cerca de 10 meses eu venho me dedicando aos estudos de
               programação 🧑‍💻, sempre aplicando em projetos pessoais os conceitos
               aprendidos. possuo habilidades no Frontend e conhecimentos básicos
               de Backend.
             </p>
-            <motion.div className="w-full h-full flex flex-col items-center justify-center gap-4 text-sm font-extrabold">
+            <motion.div className="w-full h-full flex flex-col items-center justify-center gap-6 text-sm font-extrabold">
               <motion.button
                 whileHover={{
                   x: 5,
@@ -231,6 +223,18 @@ const AboutSection = () => {
                 </a>
                 <img className="w-6 opacity-80" src="images/linkedin.png" />
               </motion.button>
+              <div className="flex items-center justify-center gap-2 text-lg">
+                <img
+                  onClick={like}
+                  className="w-6 h-6 cursor-pointer"
+                  src={
+                    likeIsClicked === false
+                      ? "images/heart.png"
+                      : "images/heart-filled.png"
+                  }
+                />
+                <span>432 LIKES</span>
+              </div>
             </motion.div>
           </motion.div>
         </motion.div>
