@@ -1,5 +1,43 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
+
+const skills = [
+  {
+    title: "Threejs / React Three Fiber",
+    level: 75,
+  },
+  {
+    title: "React",
+    level: 80,
+  },
+  {
+    title: "Typescript",
+    level: 60,
+  },
+  {
+    title: "Nodejs",
+    level: 40,
+  },
+];
+
+const languages = [
+  {
+    title: "Português",
+    level: 95,
+  },
+  {
+    title: "Inglês",
+    level: 35,
+  },
+  {
+    title: "Mineirês",
+    level: 100,
+  },
+  {
+    title: "Línguagem do amor",
+    level: 100,
+  },
+];
 
 const Section = (props: any) => {
   const { children } = props;
@@ -13,9 +51,17 @@ const Section = (props: any) => {
 
 const AboutSection = () => {
   const [likeIsClicked, setLikeIsClicked] = useState<boolean>(false);
+  const [color, setColor] = useState<string>("");
+  const colorRef = useRef(null);
+
+  useEffect(() => {
+    colorRef.current.style.color = color;
+  }, [color]);
+
   const like = () => {
     setLikeIsClicked(!likeIsClicked);
   };
+
   return (
     <Section>
       <div className="flex w-screen h-screen">
@@ -67,7 +113,9 @@ const AboutSection = () => {
                   <h1>WEB</h1>
                 </div>
                 <div>
-                  <h1 className="text-[#B30DEE] tracking-wide">FRONT-END</h1>
+                  <h1 ref={colorRef} className={`tracking-wide`}>
+                    FRONT-END
+                  </h1>
                 </div>
               </div>
             </motion.div>
@@ -128,6 +176,8 @@ const AboutSection = () => {
               }
             />
             <span>432 LIKES</span>
+            <input type="color" onChange={(e) => setColor(e.target.value)} />
+            <p>{color}</p>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 200 }}
@@ -139,10 +189,10 @@ const AboutSection = () => {
             className="w-[80%] text-white font-medium text-center text-lg pt-10"
           >
             <p>
-              Há cerca de 10 meses eu venho estudando e me dedicando aos estudos
-              de programação 🧑‍💻, sempre aplicando em projetos pessoais os
-              conceitos aprendidos. possuo habilidades no Frontend e
-              conhecimentos básicos de Backend.
+              Há cerca de 10 meses eu venho me dedicando aos estudos de
+              programação 🧑‍💻, sempre aplicando em projetos pessoais os conceitos
+              aprendidos. possuo habilidades no Frontend e conhecimentos básicos
+              de Backend.
             </p>
             <motion.div className="w-full h-full flex flex-col items-center justify-center gap-4 text-sm font-extrabold">
               <motion.button
@@ -180,76 +230,107 @@ const AboutSection = () => {
   );
 };
 
-const skills = [
-  {
-    title: "Threejs / React Three Fiber",
-    level: 80,
-  },
-  {
-    title: "React / React Native",
-    level: 90,
-  },
-  {
-    title: "Nodejs",
-    level: 80,
-  },
-  {
-    title: "Typescript",
-    level: 60,
-  },
-];
-
 const SkillSection = () => {
   return (
     <Section>
-      <motion.div whileInView={"visible"} className="pl-40">
-        <h2 className="text-5xl font-bold text-white">Skills</h2>
-        <div className=" mt-8 space-y-4">
-          {skills.map((skill, index) => (
-            <div className="w-64" key={index}>
-              <motion.h3
-                className="text-xl font-bold text-white"
-                initial={{
-                  opacity: 0,
-                }}
-                variants={{
-                  visible: {
-                    opacity: 1,
-                    transition: {
-                      duration: 1,
-                      delay: 1 + index * 0.2,
-                    },
-                  },
-                }}
-              >
-                {skill.title}
-              </motion.h3>
-              <div className="h-2 w-full bg-gray-200 rounded-full mt-2">
-                <motion.div
-                  className="h-full bg-[#B30DEE] rounded-full "
-                  style={{ width: `${skill.level}%` }}
+      <div className="flex w-full flex justify-center items-center text-white">
+        <motion.div
+          whileInView={"visible"}
+          className="w-1/2 flex flex-col justify-center items-center"
+        >
+          <h2 className="text-5xl font-bold">HABILIDADES</h2>
+          <div className="mt-8 space-y-4">
+            {skills.map((skill, index) => (
+              <div className="w-64" key={index}>
+                <motion.h3
+                  className="text-xl font-bold text-white"
                   initial={{
-                    scaleX: 0,
-                    originX: 0,
+                    opacity: 0,
                   }}
                   variants={{
                     visible: {
-                      scaleX: 1,
+                      opacity: 1,
                       transition: {
                         duration: 1,
-                        delay: 1 + index * 0.2,
+                        delay: 1,
                       },
                     },
                   }}
-                />
+                >
+                  {skill.title}
+                </motion.h3>
+                <div className="h-2 w-full bg-gray-200 rounded-full mt-2">
+                  <motion.div
+                    className="h-full rounded-full "
+                    style={{ width: `${skill.level}%` }}
+                    initial={{
+                      scaleX: 0,
+                      originX: 0,
+                    }}
+                    variants={{
+                      visible: {
+                        scaleX: 1,
+                        transition: {
+                          duration: 1,
+                          delay: 1,
+                        },
+                      },
+                    }}
+                  />
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-        <div>
-          <h2 className="text-5xl font-bold mt-10 text-white">Languages</h2>
-        </div>
-      </motion.div>
+            ))}
+          </div>
+        </motion.div>
+        <motion.div
+          whileInView={"visible"}
+          className="w-1/2 flex flex-col justify-center items-center"
+        >
+          <h2 className="text-5xl font-bold">LÍNGUAS</h2>
+          <div className=" mt-8 space-y-4">
+            {languages.map((lng, index) => (
+              <div className="w-64" key={index}>
+                <motion.h3
+                  className="text-xl font-bold text-white"
+                  initial={{
+                    opacity: 0,
+                  }}
+                  variants={{
+                    visible: {
+                      opacity: 1,
+                      transition: {
+                        duration: 1,
+                        delay: 1,
+                      },
+                    },
+                  }}
+                >
+                  {lng.title}
+                </motion.h3>
+                <div className="h-2 w-full bg-gray-200 rounded-full mt-2">
+                  <motion.div
+                    className="h-full bg-[#B30DEE] rounded-full "
+                    style={{ width: `${lng.level}%` }}
+                    initial={{
+                      scaleX: 0,
+                      originX: 0,
+                    }}
+                    variants={{
+                      visible: {
+                        scaleX: 1,
+                        transition: {
+                          duration: 1,
+                          delay: 1,
+                        },
+                      },
+                    }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
     </Section>
   );
 };
