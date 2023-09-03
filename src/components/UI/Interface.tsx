@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
+import { useStoreApp } from "../../store";
 
 const skills = [
   {
@@ -50,12 +51,16 @@ const Section = (props: any) => {
 };
 
 const AboutSection = () => {
+  const { color, setColor }: any = useStoreApp();
+
   const [likeIsClicked, setLikeIsClicked] = useState<boolean>(false);
-  const [color, setColor] = useState<string>("");
-  const colorRef = useRef(null);
+
+  const colorRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    colorRef.current.style.color = color;
+    if (colorRef.current) {
+      colorRef.current.style.color = color;
+    }
   }, [color]);
 
   const like = () => {
@@ -176,7 +181,11 @@ const AboutSection = () => {
               }
             />
             <span>432 LIKES</span>
-            <input type="color" onChange={(e) => setColor(e.target.value)} />
+            <input
+              type="color"
+              value={color}
+              onChange={(e) => setColor(e.target.value)}
+            />
             <p>{color}</p>
           </motion.div>
           <motion.div
@@ -231,6 +240,26 @@ const AboutSection = () => {
 };
 
 const SkillSection = () => {
+  const { color }: any = useStoreApp();
+
+  const colorRefsSkills = skills.map(() => useRef<HTMLDivElement | null>(null));
+  const colorRefsLangs = languages.map(() =>
+    useRef<HTMLDivElement | null>(null)
+  );
+
+  useEffect(() => {
+    colorRefsSkills.forEach((ref) => {
+      if (ref.current) {
+        ref.current.style.backgroundColor = color;
+      }
+    });
+    colorRefsLangs.forEach((ref) => {
+      if (ref.current) {
+        ref.current.style.backgroundColor = color;
+      }
+    });
+  }, [color, colorRefsSkills, colorRefsLangs]);
+
   return (
     <Section>
       <div className="flex w-full flex justify-center items-center text-white">
@@ -261,7 +290,8 @@ const SkillSection = () => {
                 </motion.h3>
                 <div className="h-2 w-full bg-gray-200 rounded-full mt-2">
                   <motion.div
-                    className="h-full rounded-full "
+                    className="h-full rounded-full"
+                    ref={colorRefsSkills[index]}
                     style={{ width: `${skill.level}%` }}
                     initial={{
                       scaleX: 0,
@@ -309,7 +339,8 @@ const SkillSection = () => {
                 </motion.h3>
                 <div className="h-2 w-full bg-gray-200 rounded-full mt-2">
                   <motion.div
-                    className="h-full bg-[#B30DEE] rounded-full "
+                    ref={colorRefsLangs[index]}
+                    className="h-full rounded-full "
                     style={{ width: `${lng.level}%` }}
                     initial={{
                       scaleX: 0,
