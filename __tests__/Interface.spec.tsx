@@ -1,5 +1,6 @@
-import { render } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 import { Interface } from "../src/components/UI/Interface";
+import { useStoreApp } from "../src/store";
 
 class IntersectionObserver {
   constructor() {}
@@ -55,6 +56,27 @@ describe("Home elements should be rendered", () => {
     const { getByText } = render(<Interface />);
     const likeButton = getByText("432 LIKES");
     expect(likeButton).toBeInTheDocument();
+  });
+});
+
+describe("Testing interactions on Home elements", () => {
+  test("If the input color value is equal to color value in zustand when page is loaded", () => {
+    const { getByTestId } = render(<Interface />);
+    const color = useStoreApp.getState().color;
+    const input = getByTestId("input-color");
+    const corInput = input.value.toUpperCase();
+    expect(corInput).toBe(color);
+  });
+
+  test("User handle change the color", () => {
+    const { getByTestId } = render(<Interface />);
+    const input = getByTestId("input-color");
+
+    fireEvent.change(input, { target: { value: "#d317b3" } });
+
+    const color = useStoreApp.getState().color;
+    const corInput = input.value;
+    expect(corInput).toBe(color);
   });
 });
 
