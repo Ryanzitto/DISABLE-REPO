@@ -69,7 +69,7 @@ const AboutSection = () => {
 
   return (
     <Section>
-      <div className="flex w-screen h-screen">
+      <div className="flex w-screen justify-center items-center">
         <motion.div
           data-testid={"div"}
           whileInView={"visible"}
@@ -85,7 +85,7 @@ const AboutSection = () => {
               },
             },
           }}
-          className="w-1/2 h-screen"
+          className="h-screen  w-[50%]"
         >
           <motion.header
             initial={{ x: -250 }}
@@ -94,14 +94,14 @@ const AboutSection = () => {
               duration: 1,
               delay: 0,
             }}
-            className="h-32 w-full flex justify-start items-end text-white font-black text-lg"
+            className="h-32 w-full flex justify-start items-center text-white font-black text-lg lg:h-32 lg:items-end 2xl:h-64"
           >
-            <div className="flex flex-col justify-center pl-14">
+            <div className="flex flex-col justify-center text-sm md:text-lg pl-6 min-[900px]:pl-10 xl:text-xl xl:pl-12 2xl:text-3xl">
               <span>👋 OLÁ, EU SOU</span>
               <span>RYAN HENRIQUE</span>
             </div>
           </motion.header>
-          <div className="w-full h-full flex flex-col justify-start pl-10 pt-8">
+          <div className="w-full h-full flex flex-col justify-start">
             <motion.div
               initial={{ x: -250 }}
               whileInView={{ x: 0 }}
@@ -109,17 +109,24 @@ const AboutSection = () => {
                 duration: 1,
                 delay: 0,
               }}
-              className="flex w-fit h-fit justify-center flex-col text-6xl text-white font-black gap-2"
+              className="flex w-full h-fit justify-center flex-col text-white font-black gap-2 pl-6 min-[900px]:pl-10 lg:pt-10 2xl:pt-10"
             >
-              <div className="italic ml-2">
-                <h1>DESENVOLVEDOR</h1>
+              <div className="italic">
+                <h1 className="text-lg md:text-4xl min-[600px]:text-3xl  min-[1000px]:text-5xl xl:text-6xl 2xl:text-7xl">
+                  DESENVOLVEDOR
+                </h1>
               </div>
-              <div className="flex gap-6">
+              <div className="flex gap-2 md:gap-3 2xl:gap-6">
                 <div className="italic">
-                  <h1>WEB</h1>
+                  <h1 className="text-lg md:text-4xl min-[600px]:text-3xl  min-[1000px]:text-5xl xl:text-6xl 2xl:text-7xl">
+                    WEB
+                  </h1>
                 </div>
                 <div>
-                  <h1 ref={colorRef} className={`tracking-wide`}>
+                  <h1
+                    ref={colorRef}
+                    className={`tracking-wide text-lg md:text-4xl min-[600px]:text-3xl  min-[1000px]:text-5xl xl:text-6xl 2xl:text-7xl`}
+                  >
                     FRONT-END
                   </h1>
                 </div>
@@ -133,7 +140,7 @@ const AboutSection = () => {
                 duration: 1,
                 delay: 0,
               }}
-              className="flex flex-col gap-6 ml-2 text-lg  text-white font-medium pt-8"
+              className="flex flex-col gap-6 ml-2 text-sm md:text-md md:pt-10 text-white font-medium pt-4 pl-4 min-[900px]:pl-8 lg:text-lg lg:pt-14 xl:text-xl 2xl:text-3xl"
             >
               <p>
                 Sou um jovem desenvolvedor muito criativo, interessado em criar
@@ -162,7 +169,7 @@ const AboutSection = () => {
               },
             },
           }}
-          className="h-screen w-1/2 flex flex-col items-center"
+          className="h-screen flex flex-col items-center w-[50%]"
         >
           <motion.div
             initial={{ opacity: 0, x: 200 }}
@@ -171,11 +178,11 @@ const AboutSection = () => {
               duration: 1,
               delay: 0,
             }}
-            className="w-full h-32 flex  items-center justify-end text-lg font-black text-white pt-10 pr-20 gap-10"
+            className="w-full h-20 flex  items-center justify-end text-lg font-black text-white pr-6 pt-10 md:pr-10 gap-10 min-[900px]:pr-14 lg:h-32 xl:pr-20 2xl:h-64 2xl:pt-40"
           >
             <input
               data-testid={"input-color"}
-              className="w-6 h-6 border-0 bg-transparent cursor-pointer class"
+              className="w-6 h-6 xl:w-10 xl:h-10 border-0 bg-transparent cursor-pointer class"
               type="color"
               value={color}
               onChange={(e) => setColor(e.target.value)}
@@ -188,27 +195,18 @@ const AboutSection = () => {
               duration: 1,
               delay: 0,
             }}
-            className="w-[80%] text-white font-medium text-center text-lg pt-10"
+            className="w-[80%] text-white font-medium text-center text-sm pt-10 "
           >
-            <p data-testid={"about2"}>
+            <p
+              data-testid={"about2"}
+              className="md:text-md  lg:text-lg xl:text-xl 2xl:text-3xl"
+            >
               Há cerca de 10 meses eu venho me dedicando aos estudos de
               programação 🧑‍💻, sempre aplicando em projetos pessoais os conceitos
               aprendidos. possuo habilidades no Frontend e conhecimentos básicos
               de Backend.
             </p>
-            <motion.div className="w-full h-full flex flex-col items-center justify-center gap-6 text-sm font-extrabold">
-              <motion.button
-                whileHover={{
-                  x: 5,
-                  transition: { duration: 0.5 },
-                }}
-                className="bg-white p-2 text-zinc-700 rounded-md flex gap-2 tracking-wide justify-center items-center"
-              >
-                <a href="https://github.com/Ryanzitto/" target="blank">
-                  VIEW MY GITHUB
-                </a>
-                <img className="w-6 opacity-80" src="images/github.png" />
-              </motion.button>
+            <motion.div className="w-full h-full flex flex-col items-center justify-start md:justify-center md:pt-0 md:mt-4 pt-10 gap-4 lg:text-lg  lg:gap-6 text-xs md:text-md font-extrabold xl:text-xl 2xl:text-3xl">
               <motion.button
                 whileHover={{
                   x: 5,
@@ -224,7 +222,20 @@ const AboutSection = () => {
                 </a>
                 <img className="w-6 opacity-80" src="images/linkedin.png" />
               </motion.button>
-              <div className="flex items-center justify-center gap-2 text-lg">
+              <motion.button
+                whileHover={{
+                  x: 5,
+                  transition: { duration: 0.5 },
+                }}
+                className="bg-white p-2 text-zinc-700 rounded-md flex gap-2 tracking-wide justify-center items-center"
+              >
+                <a href="https://github.com/Ryanzitto/" target="blank">
+                  VIEW MY GITHUB
+                </a>
+                <img className="w-6 opacity-80" src="images/github.png" />
+              </motion.button>
+
+              <div className="flex items-center justify-center gap-2 text-lg lg:text-xl 2xl:text-2xl">
                 <img
                   onClick={like}
                   className="w-6 h-6 cursor-pointer"

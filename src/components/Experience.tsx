@@ -1,4 +1,4 @@
-import { ContactShadows, OrbitControls } from "@react-three/drei";
+import { ContactShadows } from "@react-three/drei";
 import { Avatar } from "./3D/Avatar";
 import { useControls } from "leva";
 import { motion } from "framer-motion-3d";
@@ -27,11 +27,6 @@ export const Experience = (props) => {
   return (
     <>
       <group position={[0, -2.5, 0]}>
-        {/* <OrbitControls
-          maxPolarAngle={Math.PI / 2}
-          minPolarAngle={Math.PI / 2.5}
-        /> */}
-
         <ambientLight intensity={1} />
         <ContactShadows
           opacity={1}

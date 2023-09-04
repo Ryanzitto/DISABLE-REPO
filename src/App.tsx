@@ -6,6 +6,7 @@ import { useState } from "react";
 import { ScrollManager } from "./components/ScrollComponent";
 import { framerMotionConfig } from "./config";
 import { MotionConfig } from "framer-motion";
+import { Leva } from "leva";
 function App() {
   const [section, setSection] = useState(0);
   return (
@@ -27,6 +28,7 @@ function App() {
             <Interface />
           </Scroll>
         </ScrollControls>
+        <Leva hidden />
       </Canvas>
     </MotionConfig>
   );
