@@ -1,3 +1,28 @@
+// Mobile:
+// Retrato (Vertical):
+// Largura: Menos de 600px (geralmente 320px a 480px)
+// Altura: Varia dependendo do dispositivo
+
+// Tablet:
+// Retrato (Vertical):
+// Largura: De 600px a 767px
+// Altura: Varia dependendo do dispositivo
+// Paisagem (Horizontal):
+// Largura: De 768px a 1023px
+// Altura: Varia dependendo do dispositivo
+
+// Desktop:
+// Largura: De 1024px a 1199px
+// Altura: Varia dependendo do monitor
+
+// Desktop Grande:
+// Largura: 1200px ou mais
+// Altura: Varia dependendo do monitor
+
+// Tela Grande (por exemplo, TVs e monitores de alta resolução):
+// Largura: 1920px ou mais
+// Altura: Varia dependendo do dispositivo
+
 import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import { useStoreApp } from "../../store";
@@ -85,7 +110,7 @@ const AboutSection = () => {
               },
             },
           }}
-          className="h-screen  w-[50%]"
+          className="mt-48 h-screen w-[50%] flex flex-col justify-start items-center"
         >
           <motion.header
             initial={{ x: -250 }}
@@ -96,12 +121,12 @@ const AboutSection = () => {
             }}
             className="h-32 w-full flex justify-start items-center text-white font-black text-lg lg:h-32 lg:items-end 2xl:h-64"
           >
-            <div className="flex flex-col justify-center text-sm md:text-lg pl-6 min-[900px]:pl-10 xl:text-xl xl:pl-12 2xl:text-3xl">
+            <div className="flex flex-col justify-center text-lg md:text-lg pl-6 min-[900px]:pl-10 xl:text-xl xl:pl-12 2xl:text-3xl">
               <span>👋 OLÁ, EU SOU</span>
               <span>RYAN HENRIQUE</span>
             </div>
           </motion.header>
-          <div className="w-full h-full flex flex-col justify-start">
+          <div className="w-full flex flex-col justify-start">
             <motion.div
               initial={{ x: -250 }}
               whileInView={{ x: 0 }}
@@ -109,7 +134,7 @@ const AboutSection = () => {
                 duration: 1,
                 delay: 0,
               }}
-              className="flex w-full h-fit justify-center flex-col text-white font-black gap-2 pl-6 min-[900px]:pl-10 lg:pt-10 2xl:pt-10"
+              className="flex w-full h-fit justify-center flex-col text-white font-black pl-6 min-[900px]:pl-10 lg:pt-10 2xl:pt-10"
             >
               <div className="italic">
                 <h1 className="text-lg md:text-4xl min-[600px]:text-3xl  min-[1000px]:text-5xl xl:text-6xl 2xl:text-7xl">
@@ -140,7 +165,7 @@ const AboutSection = () => {
                 duration: 1,
                 delay: 0,
               }}
-              className="flex flex-col gap-6 ml-2 text-sm md:text-md md:pt-10 text-white font-medium pt-4 pl-4 min-[900px]:pl-8 lg:text-lg lg:pt-14 xl:text-xl 2xl:text-3xl"
+              className="w-[200px] flex flex-col gap-6 ml-2 text-sm md:text-md md:pt-10 text-white font-medium pt-4 pl-4 min-[900px]:pl-8 lg:text-lg lg:pt-14 xl:text-xl 2xl:text-3xl"
             >
               <p>
                 Sou um jovem desenvolvedor muito criativo, interessado em criar
@@ -169,7 +194,7 @@ const AboutSection = () => {
               },
             },
           }}
-          className="h-screen flex flex-col items-center w-[50%]"
+          className="mt-48 h-screen w-[50%] flex flex-col justify-start items-center"
         >
           <motion.div
             initial={{ opacity: 0, x: 200 }}
@@ -178,8 +203,9 @@ const AboutSection = () => {
               duration: 1,
               delay: 0,
             }}
-            className="w-full h-20 flex  items-center justify-end text-lg font-black text-white pr-6 pt-10 md:pr-10 gap-10 min-[900px]:pr-14 lg:h-32 xl:pr-20 2xl:h-64 2xl:pt-40"
+            className="w-full h-20 flex  items-center justify-end text-lg font-black text-white pr-6 pt-10 md:pr-10 gap-2 min-[900px]:pr-14 lg:h-32 xl:pr-20 2xl:h-64 2xl:pt-40"
           >
+            <span>COLOR:</span>
             <input
               data-testid={"input-color"}
               className="w-6 h-6 xl:w-10 xl:h-10 border-0 bg-transparent cursor-pointer class"
@@ -195,24 +221,24 @@ const AboutSection = () => {
               duration: 1,
               delay: 0,
             }}
-            className="w-[80%] text-white font-medium text-center text-sm pt-10 "
+            className="w-[80%] text-white font-medium text-right md:text-center text-sm pt-10 flex flex-col items-end"
           >
             <p
               data-testid={"about2"}
-              className="md:text-md  lg:text-lg xl:text-xl 2xl:text-3xl"
+              className="w-[150px]  md:text-md lg:text-lg xl:text-xl 2xl:text-3xl"
             >
               Há cerca de 10 meses eu venho me dedicando aos estudos de
               programação 🧑‍💻, sempre aplicando em projetos pessoais os conceitos
               aprendidos. possuo habilidades no Frontend e conhecimentos básicos
               de Backend.
             </p>
-            <motion.div className="w-full h-full flex flex-col items-center justify-start md:justify-center md:pt-0 md:mt-4 pt-10 gap-4 lg:text-lg  lg:gap-6 text-xs md:text-md font-extrabold xl:text-xl 2xl:text-3xl">
+            <motion.div className="w-full h-full flex flex-col items-end justify-center md:justify-center md:pt-0 md:mt-4 pt-10 gap-4 lg:text-lg  lg:gap-6 text-xs md:text-md font-extrabold xl:text-xl 2xl:text-3xl">
               <motion.button
                 whileHover={{
                   x: 5,
                   transition: { duration: 0.5 },
                 }}
-                className="bg-white p-2 text-zinc-700 rounded-md flex gap-2 tracking-wide justify-center items-center"
+                className="text-xs bg-white p-2 text-zinc-700 rounded-md flex gap-2 tracking-wide justify-center items-center"
               >
                 <a
                   href="https://www.linkedin.com/in/ryan-henrique-1b4075233/"
@@ -227,7 +253,7 @@ const AboutSection = () => {
                   x: 5,
                   transition: { duration: 0.5 },
                 }}
-                className="bg-white p-2 text-zinc-700 rounded-md flex gap-2 tracking-wide justify-center items-center"
+                className="text-xs bg-white p-2 text-zinc-700 rounded-md flex gap-2 tracking-wide justify-center items-center"
               >
                 <a href="https://github.com/Ryanzitto/" target="blank">
                   VIEW MY GITHUB
