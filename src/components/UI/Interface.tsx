@@ -71,6 +71,7 @@ const AboutSection = () => {
     <Section>
       <div className="flex w-screen h-screen">
         <motion.div
+          data-testid={"div"}
           whileInView={"visible"}
           initial={{
             opacity: 0,

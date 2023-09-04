@@ -1,4 +1,4 @@
-import { fireEvent, render } from "@testing-library/react";
+import { fireEvent, render, waitFor } from "@testing-library/react";
 import { Interface } from "../src/components/UI/Interface";
 import { useStoreApp } from "../src/store";
 
@@ -77,6 +77,18 @@ describe("Testing interactions on Home elements", () => {
     const color = useStoreApp.getState().color;
     const corInput = input.value;
     expect(corInput).toBe(color);
+  });
+});
+
+describe("Testing the animations", () => {
+  test("testing the initial opacity of element", () => {
+    const { getByTestId } = render(<Interface />);
+    const div = getByTestId("div");
+
+    const computedStyles = getComputedStyle(div);
+    const opacity = computedStyles.getPropertyValue("opacity");
+
+    expect(Number(opacity)).toBe(0);
   });
 });
 
