@@ -3,14 +3,17 @@ import { useFrame } from "@react-three/fiber";
 import { gsap } from "gsap";
 import { useEffect, useRef } from "react";
 
-export const ScrollManager = (props) => {
+export const ScrollManager = (props: {
+  section: any;
+  onSectionChange: any;
+}) => {
   const { section, onSectionChange } = props;
 
   const data = useScroll();
+  console.log(data);
   const lastScroll = useRef(0);
   const isAnimating = useRef(false);
 
-  console.log(data);
   data.fill.classList.add("top-0");
   data.fill.classList.add("absolute");
 
@@ -34,6 +37,7 @@ export const ScrollManager = (props) => {
     }
 
     const curSection = Math.floor(data.scroll.current * data.pages);
+
     if (data.scroll.current > lastScroll.current && curSection === 0) {
       onSectionChange(1);
     }
