@@ -70,7 +70,7 @@ const Section = (props: any) => {
   const { children } = props;
 
   return (
-    <section className="h-screen w-screen max-w-screen-2xl mx-auto flex flex-col items-start justify-center">
+    <section className="h-screen w-screen max-w-screen-2xl mx-auto flex flex-col items-center justify-center">
       {children}
     </section>
   );
@@ -122,7 +122,7 @@ const AboutSection = () => {
             }}
             className="w-full flex justify-center items-center lg:justify-start text-white font-black text-lg lg:h-32 lg:items-end 2xl:h-64"
           >
-            <div className="flex flex-col justify-center text-sm min-[700px]:text-2xl lg:pl-12 xl:pl-16 2xl:text-3xl">
+            <div className="flex flex-col justify-center text-sm min-[700px]:text-2xl lg:pl-12 xl:pl-16 pl-0 2xl:text-3xl">
               <span className="lg:text-xl ">👋 OLÁ, EU SOU</span>
               <span className="lg:text-xl ">RYAN HENRIQUE</span>
             </div>
@@ -234,7 +234,7 @@ const AboutSection = () => {
               aprendidos. possuo habilidades no Frontend e conhecimentos básicos
               de Backend.
             </p>
-            <motion.div className="w-full h-full flex flex-col xl:items-end xl:pr-12 xl:pt-20 items-center justify-center md:justify-center md:pt-0 md:mt-4 pt-10 gap-4 lg:text-lg lg:gap-6 text-xs md:text-lg font-extrabold xl:text-xl 2xl:text-3xl">
+            <motion.div className="w-full h-full flex flex-col lg:items-end lg:pr-12 xl:pt-20 items-center justify-center md:justify-center md:pt-0 md:mt-4 pt-10 gap-4 lg:text-lg lg:gap-6 text-xs md:text-lg font-extrabold xl:text-xl 2xl:text-3xl">
               <motion.button
                 whileHover={{
                   x: 5,
@@ -412,7 +412,7 @@ const SkillSection = () => {
 
 export const Interface = () => {
   return (
-    <div className="flex flex-col items-center w-screen">
+    <div className="flex flex-col items-center justify-center w-screen">
       <AboutSection />
       <SkillSection />
     </div>
