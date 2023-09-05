@@ -4,7 +4,7 @@ import { useControls } from "leva";
 import { motion } from "framer-motion-3d";
 import { useEffect, useState } from "react";
 
-export const Experience = (props) => {
+export const Experience = (props: any) => {
   const { section } = props;
   const { animation }: any = useControls({
     animation: {

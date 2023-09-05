@@ -66,10 +66,13 @@ export function Avatar(props: JSX.IntrinsicElements["group"] | any) {
 
   useFrame((state) => {
     if (headFollow) {
+      //@ts-ignore
       group?.current?.getObjectByName("Head").lookAt(state.camera.position);
     }
     if (cursorFollow) {
+      //@ts-ignore
       const target = new THREE.Vector3(state.mouse.x, state.mouse.y, 1);
+      //@ts-ignore
       group?.current?.getObjectByName("Spine2").lookAt(target);
     }
   });

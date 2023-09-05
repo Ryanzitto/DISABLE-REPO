@@ -1,4 +1,4 @@
-import { fireEvent, render, waitFor } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 import { Interface } from "../src/components/UI/Interface";
 import { useStoreApp } from "../src/store";
 
@@ -62,8 +62,10 @@ describe("Home elements should be rendered", () => {
 describe("Testing interactions on Home elements", () => {
   test("If the input color value is equal to color value in zustand when page is loaded", () => {
     const { getByTestId } = render(<Interface />);
+    //@ts-ignore
     const color = useStoreApp.getState().color;
     const input = getByTestId("input-color");
+    //@ts-ignore
     const corInput = input.value.toUpperCase();
     expect(corInput).toBe(color);
   });
@@ -74,7 +76,9 @@ describe("Testing interactions on Home elements", () => {
 
     fireEvent.change(input, { target: { value: "#d317b3" } });
 
+    //@ts-ignore
     const color = useStoreApp.getState().color;
+    //@ts-ignore
     const corInput = input.value;
     expect(corInput).toBe(color);
   });

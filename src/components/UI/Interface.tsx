@@ -85,7 +85,9 @@ const AboutSection = () => {
 
   useEffect(() => {
     if (colorRef.current) {
-      colorRef.current.style.color = color;
+      colorRef.current.style.backgroundImage = `linear-gradient(120deg, ${color}, #1b1b1b)`;
+      colorRef.current.style.webkitBackgroundClip = "text";
+      colorRef.current.style.color = "transparent";
     }
   }, [color]);
 
@@ -205,7 +207,7 @@ const AboutSection = () => {
               duration: 1,
               delay: 0,
             }}
-            className="w-full flex items-center justify-center lg:justify-end text-lg font-black text-white md:pr-10 gap-2 min-[900px]:pr-14 lg:pr-12 lg:h-32 2xl:h-64 2xl:pt-40"
+            className="w-full flex items-center justify-center lg:justify-end text-lg font-black text-white md:pr-10 gap-2 min-[900px]:pr-14 lg:pr-20 lg:h-32 2xl:h-64 2xl:pt-40"
           >
             <span className="md:text-lg">COLOR:</span>
             <input
@@ -227,14 +229,14 @@ const AboutSection = () => {
           >
             <p
               data-testid={"about2"}
-              className="w-[90%] md:text-lg lg:text-lg lg:text-right lg:pr-4 xl:text-xl 2xl:text-3xl"
+              className="w-[90%] md:text-lg lg:text-lg lg:text-right lg:pr-10 xl:text-xl 2xl:text-3xl"
             >
               Há cerca de 10 meses eu venho me dedicando aos estudos de
               programação 🧑‍💻, sempre aplicando em projetos pessoais os conceitos
               aprendidos. possuo habilidades no Frontend e conhecimentos básicos
               de Backend.
             </p>
-            <motion.div className="w-full h-full flex flex-col lg:items-end lg:pr-12 xl:pt-20 items-center justify-center md:justify-center md:pt-0 md:mt-4 pt-10 gap-4 lg:text-lg lg:gap-6 text-xs md:text-lg font-extrabold xl:text-xl 2xl:text-3xl">
+            <motion.div className="w-full h-full flex flex-col lg:items-end lg:pr-20 xl:pt-20 items-center justify-center md:justify-center md:pt-0 md:mt-4 pt-10 gap-4 lg:text-lg lg:gap-6 text-xs md:text-lg font-extrabold xl:text-xl 2xl:text-3xl">
               <motion.button
                 whileHover={{
                   x: 5,
