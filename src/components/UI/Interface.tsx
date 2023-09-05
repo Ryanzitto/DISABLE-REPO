@@ -94,7 +94,7 @@ const AboutSection = () => {
 
   return (
     <Section>
-      <div className="flex w-screen justify-center items-center">
+      <div className="flex flex-col h-screen w-screen justify-center items-center">
         <motion.div
           data-testid={"div"}
           whileInView={"visible"}
@@ -110,7 +110,7 @@ const AboutSection = () => {
               },
             },
           }}
-          className="mt-48 h-screen w-[50%] flex flex-col justify-start items-center"
+          className="w-screen h-1/2 flex flex-col justify-center items-center gap-4"
         >
           <motion.header
             initial={{ x: -250 }}
@@ -119,14 +119,14 @@ const AboutSection = () => {
               duration: 1,
               delay: 0,
             }}
-            className="h-32 w-full flex justify-start items-center text-white font-black text-lg lg:h-32 lg:items-end 2xl:h-64"
+            className="w-full flex justify-center items-center text-white font-black text-lg lg:h-32 lg:items-end 2xl:h-64"
           >
-            <div className="flex flex-col justify-center text-lg md:text-lg pl-6 min-[900px]:pl-10 xl:text-xl xl:pl-12 2xl:text-3xl">
+            <div className="flex flex-col justify-center text-sm md:text-lg min-[900px]:pl-10 xl:text-xl xl:pl-12 2xl:text-3xl">
               <span>👋 OLÁ, EU SOU</span>
               <span>RYAN HENRIQUE</span>
             </div>
           </motion.header>
-          <div className="w-full flex flex-col justify-start">
+          <div className="w-full flex flex-col justify-center items-center">
             <motion.div
               initial={{ x: -250 }}
               whileInView={{ x: 0 }}
@@ -134,23 +134,23 @@ const AboutSection = () => {
                 duration: 1,
                 delay: 0,
               }}
-              className="flex w-full h-fit justify-center flex-col text-white font-black pl-6 min-[900px]:pl-10 lg:pt-10 2xl:pt-10"
+              className="flex w-full h-fit justify-center items-center flex-col text-white font-black min-[900px]:pl-10 lg:pt-10 2xl:pt-10"
             >
               <div className="italic">
-                <h1 className="text-lg md:text-4xl min-[600px]:text-3xl  min-[1000px]:text-5xl xl:text-6xl 2xl:text-7xl">
+                <h1 className="text-3xl md:text-4xl min-[600px]:text-3xl  min-[1000px]:text-5xl xl:text-6xl 2xl:text-7xl">
                   DESENVOLVEDOR
                 </h1>
               </div>
               <div className="flex gap-2 md:gap-3 2xl:gap-6">
                 <div className="italic">
-                  <h1 className="text-lg md:text-4xl min-[600px]:text-3xl  min-[1000px]:text-5xl xl:text-6xl 2xl:text-7xl">
+                  <h1 className="text-3xl md:text-4xl min-[600px]:text-3xl  min-[1000px]:text-5xl xl:text-6xl 2xl:text-7xl">
                     WEB
                   </h1>
                 </div>
                 <div>
                   <h1
                     ref={colorRef}
-                    className={`tracking-wide text-lg md:text-4xl min-[600px]:text-3xl  min-[1000px]:text-5xl xl:text-6xl 2xl:text-7xl`}
+                    className={`tracking-wide text-3xl md:text-4xl min-[600px]:text-3xl  min-[1000px]:text-5xl xl:text-6xl 2xl:text-7xl`}
                   >
                     FRONT-END
                   </h1>
@@ -165,7 +165,7 @@ const AboutSection = () => {
                 duration: 1,
                 delay: 0,
               }}
-              className="w-[200px] flex flex-col gap-6 ml-2 text-sm md:text-md md:pt-10 text-white font-medium pt-4 pl-4 min-[900px]:pl-8 lg:text-lg lg:pt-14 xl:text-xl 2xl:text-3xl"
+              className="w-[90%] text-center flex flex-col justify-center items-center gap-6 text-sm md:text-md md:pt-10 text-white font-medium pt-4 min-[900px]:pl-8 lg:text-lg lg:pt-14 xl:text-xl 2xl:text-3xl"
             >
               <p>
                 Sou um jovem desenvolvedor muito criativo, interessado em criar
@@ -180,6 +180,7 @@ const AboutSection = () => {
             </motion.div>
           </div>
         </motion.div>
+
         <motion.div
           whileInView={"visible"}
           initial={{
@@ -194,7 +195,7 @@ const AboutSection = () => {
               },
             },
           }}
-          className="mt-48 h-screen w-[50%] flex flex-col justify-start items-center"
+          className="w-screen flex h-1/2 flex-col justify-center items-center gap-4"
         >
           <motion.div
             initial={{ opacity: 0, x: 200 }}
@@ -203,7 +204,7 @@ const AboutSection = () => {
               duration: 1,
               delay: 0,
             }}
-            className="w-full h-20 flex  items-center justify-end text-lg font-black text-white pr-6 pt-10 md:pr-10 gap-2 min-[900px]:pr-14 lg:h-32 xl:pr-20 2xl:h-64 2xl:pt-40"
+            className="w-full flex items-center justify-center text-lg font-black text-white md:pr-10 gap-2 min-[900px]:pr-14 lg:h-32 xl:pr-20 2xl:h-64 2xl:pt-40"
           >
             <span>COLOR:</span>
             <input
@@ -221,18 +222,18 @@ const AboutSection = () => {
               duration: 1,
               delay: 0,
             }}
-            className="w-[80%] text-white font-medium text-right md:text-center text-sm pt-10 flex flex-col items-end"
+            className="text-white font-medium text-center md:text-center text-sm flex flex-col items-center"
           >
             <p
               data-testid={"about2"}
-              className="w-[150px]  md:text-md lg:text-lg xl:text-xl 2xl:text-3xl"
+              className="w-[90%]  md:text-md lg:text-lg xl:text-xl 2xl:text-3xl"
             >
               Há cerca de 10 meses eu venho me dedicando aos estudos de
               programação 🧑‍💻, sempre aplicando em projetos pessoais os conceitos
               aprendidos. possuo habilidades no Frontend e conhecimentos básicos
               de Backend.
             </p>
-            <motion.div className="w-full h-full flex flex-col items-end justify-center md:justify-center md:pt-0 md:mt-4 pt-10 gap-4 lg:text-lg  lg:gap-6 text-xs md:text-md font-extrabold xl:text-xl 2xl:text-3xl">
+            <motion.div className="w-full h-full flex flex-col items-center justify-center md:justify-center md:pt-0 md:mt-4 pt-10 gap-4 lg:text-lg  lg:gap-6 text-xs md:text-md font-extrabold xl:text-xl 2xl:text-3xl">
               <motion.button
                 whileHover={{
                   x: 5,
@@ -304,7 +305,7 @@ const SkillSection = () => {
 
   return (
     <Section>
-      <div className="flex w-full flex justify-center items-center text-white">
+      <div className="flex w-full gap-20 flex-col justify-center items-center text-white">
         <motion.div
           whileInView={"visible"}
           className="w-1/2 flex flex-col justify-center items-center"
