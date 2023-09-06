@@ -27,6 +27,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import { useStoreApp } from "../../store";
+import { AnimatePresence } from "framer-motion";
 
 const skills = [
   {
@@ -412,11 +413,36 @@ const SkillSection = () => {
   );
 };
 
+const ProjectsSection = () => {
+  const items = [
+    { id: "0", title: "teste title", subtitle: "teste subtitle" },
+    { id: "0", title: "teste title", subtitle: "teste subtitle" },
+    { id: "0", title: "teste title", subtitle: "teste subtitle" },
+  ];
+  const [selectedId, setSelectedId] = useState(null);
+  return (
+    <Section>
+      <div className="w-full h-full flex flex-col justify-center items-center bg-green-500/10">
+        <header className="bg-pink-500/10 w-[90%] h-[10%] flex items-center justify-center text-white font-black text-3xl tracking-wider">
+          <span>PROJETOS</span>
+        </header>
+        <div className="w-[90%] h-[80%] bg-red-600/10 flex gap-2 justify-between items-start flex-wrap">
+          <div className="bg-red-500 w-[400px] h-[200px] rounded-md"></div>
+          <div className="bg-red-500 w-[400px] h-[200px] rounded-md"></div>
+          <div className="bg-red-500 w-[400px] h-[200px] rounded-md"></div>
+          <div className="bg-red-500 w-[400px] h-[200px] rounded-md"></div>
+        </div>
+      </div>
+    </Section>
+  );
+};
+
 export const Interface = () => {
   return (
     <div className="flex flex-col items-center justify-center w-screen">
       <AboutSection />
       <SkillSection />
+      <ProjectsSection />
     </div>
   );
 };

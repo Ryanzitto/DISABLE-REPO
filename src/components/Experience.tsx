@@ -37,7 +37,10 @@ export const Experience = (props: any) => {
           color="#000000"
         />
         <motion.group
-          animate={{ z: section === 0 ? 0 : -0.5, x: section === 3 ? -3 : 0 }}
+          animate={{
+            z: section === 0 ? 0 : -0.5,
+            x: section == 1 ? -3 : 0,
+          }}
           rotation-x={-Math.PI / 2}
         >
           <Avatar animation={animation2} />
