@@ -27,7 +27,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import { useStoreApp } from "../../store";
-import { AnimatePresence } from "framer-motion";
 
 const skills = [
   {
@@ -287,8 +286,7 @@ const AboutSection = () => {
 };
 
 const SkillSection = () => {
-  const { color }: any = useStoreApp();
-
+  const { color, content, setContent }: any = useStoreApp();
   const colorRefsSkills = skills.map(() => useRef<HTMLDivElement | null>(null));
   const colorRefsLangs = languages.map(() =>
     useRef<HTMLDivElement | null>(null)
@@ -309,128 +307,177 @@ const SkillSection = () => {
 
   return (
     <Section>
-      <div className="flex w-full gap-20 lg:gap-0 lg:flex-row flex-col justify-center items-center text-white">
-        <motion.div
-          whileInView={"visible"}
-          className="w-1/2 flex flex-col justify-center items-center"
-        >
-          <h2 className="text-5xl font-bold">HABILIDADES</h2>
-          <div className="mt-8 space-y-4">
-            {skills.map((skill, index) => (
-              <div className="w-64" key={index}>
-                <motion.h3
-                  className="text-xl font-bold text-white"
-                  initial={{
-                    opacity: 0,
-                  }}
-                  variants={{
-                    visible: {
-                      opacity: 1,
-                      transition: {
-                        duration: 1,
-                        delay: 1,
-                      },
-                    },
-                  }}
-                >
-                  {skill.title}
-                </motion.h3>
-                <div className="h-2 w-full bg-gray-200 rounded-full mt-2">
-                  <motion.div
-                    className="h-full rounded-full"
-                    ref={colorRefsSkills[index]}
-                    style={{ width: `${skill.level}%` }}
-                    initial={{
-                      scaleX: 0,
-                      originX: 0,
-                    }}
-                    variants={{
-                      visible: {
-                        scaleX: 1,
-                        transition: {
-                          duration: 1,
-                          delay: 1,
-                        },
-                      },
-                    }}
-                  />
-                </div>
-              </div>
-            ))}
+      <div className="h-full flex w-full gap-20 lg:gap-0 flex-col justify-center items-center text-white">
+        <div className="flex w-full h-full flex-col">
+          <div className="w-full h-20 text-white font-black tracking-wider text-lg flex gap-4 justify-center items-center">
+            <span
+              onClick={() => setContent("skills")}
+              className="cursor-pointer"
+            >
+              HABILIDADES
+            </span>
+            <span
+              onClick={() => setContent("projects")}
+              className="cursor-pointer"
+            >
+              PROJETOS
+            </span>
           </div>
-        </motion.div>
-        <motion.div
-          whileInView={"visible"}
-          className="w-1/2 flex flex-col justify-center items-center"
-        >
-          <h2 className="text-5xl font-bold">LÍNGUAS</h2>
-          <div className=" mt-8 space-y-4">
-            {languages.map((lng, index) => (
-              <div className="w-64" key={index}>
-                <motion.h3
-                  className="text-xl font-bold text-white"
-                  initial={{
-                    opacity: 0,
-                  }}
-                  variants={{
-                    visible: {
-                      opacity: 1,
-                      transition: {
-                        duration: 1,
-                        delay: 1,
-                      },
-                    },
-                  }}
-                >
-                  {lng.title}
-                </motion.h3>
-                <div className="h-2 w-full bg-gray-200 rounded-full mt-2">
-                  <motion.div
-                    ref={colorRefsLangs[index]}
-                    className="h-full rounded-full "
-                    style={{ width: `${lng.level}%` }}
-                    initial={{
-                      scaleX: 0,
-                      originX: 0,
-                    }}
-                    variants={{
-                      visible: {
-                        scaleX: 1,
-                        transition: {
-                          duration: 1,
-                          delay: 1,
-                        },
-                      },
-                    }}
-                  />
+          {content === "skills" && (
+            <div className="flex w-full h-full justify-center items-center">
+              <motion.div
+                whileInView={"visible"}
+                className="w-1/2 flex flex-col justify-center items-center"
+              >
+                <h2 className="text-5xl font-bold">HABILIDADES</h2>
+                <div className="mt-8 space-y-4">
+                  {skills.map((skill, index) => (
+                    <div className="w-64" key={index}>
+                      <motion.h3
+                        className="text-xl font-bold text-white"
+                        initial={{
+                          opacity: 0,
+                        }}
+                        variants={{
+                          visible: {
+                            opacity: 1,
+                            transition: {
+                              duration: 1,
+                              delay: 1,
+                            },
+                          },
+                        }}
+                      >
+                        {skill.title}
+                      </motion.h3>
+                      <div className="h-2 w-full bg-gray-200 rounded-full mt-2">
+                        <motion.div
+                          className="h-full rounded-full"
+                          ref={colorRefsSkills[index]}
+                          style={{ width: `${skill.level}%` }}
+                          initial={{
+                            scaleX: 0,
+                            originX: 0,
+                          }}
+                          variants={{
+                            visible: {
+                              scaleX: 1,
+                              transition: {
+                                duration: 1,
+                                delay: 1,
+                              },
+                            },
+                          }}
+                        />
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              </div>
-            ))}
-          </div>
-        </motion.div>
-      </div>
-    </Section>
-  );
-};
-
-const ProjectsSection = () => {
-  const items = [
-    { id: "0", title: "teste title", subtitle: "teste subtitle" },
-    { id: "0", title: "teste title", subtitle: "teste subtitle" },
-    { id: "0", title: "teste title", subtitle: "teste subtitle" },
-  ];
-  const [selectedId, setSelectedId] = useState(null);
-  return (
-    <Section>
-      <div className="w-full h-full flex flex-col justify-center items-center bg-green-500/10">
-        <header className="bg-pink-500/10 w-[90%] h-[10%] flex items-center justify-center text-white font-black text-3xl tracking-wider">
-          <span>PROJETOS</span>
-        </header>
-        <div className="w-[90%] h-[80%] bg-red-600/10 flex gap-2 justify-between items-start flex-wrap">
-          <div className="bg-red-500 w-[400px] h-[200px] rounded-md"></div>
-          <div className="bg-red-500 w-[400px] h-[200px] rounded-md"></div>
-          <div className="bg-red-500 w-[400px] h-[200px] rounded-md"></div>
-          <div className="bg-red-500 w-[400px] h-[200px] rounded-md"></div>
+              </motion.div>
+              <motion.div
+                whileInView={"visible"}
+                className="w-1/2 flex flex-col justify-center items-center"
+              >
+                <h2 className="text-5xl font-bold">LÍNGUAS</h2>
+                <div className=" mt-8 space-y-4">
+                  {languages.map((lng, index) => (
+                    <div className="w-64" key={index}>
+                      <motion.h3
+                        className="text-xl font-bold text-white"
+                        initial={{
+                          opacity: 0,
+                        }}
+                        variants={{
+                          visible: {
+                            opacity: 1,
+                            transition: {
+                              duration: 1,
+                              delay: 1,
+                            },
+                          },
+                        }}
+                      >
+                        {lng.title}
+                      </motion.h3>
+                      <div className="h-2 w-full bg-gray-200 rounded-full mt-2">
+                        <motion.div
+                          ref={colorRefsLangs[index]}
+                          className="h-full rounded-full "
+                          style={{ width: `${lng.level}%` }}
+                          initial={{
+                            scaleX: 0,
+                            originX: 0,
+                          }}
+                          variants={{
+                            visible: {
+                              scaleX: 1,
+                              transition: {
+                                duration: 1,
+                                delay: 1,
+                              },
+                            },
+                          }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+          )}
+          {content === "projects" && (
+            <div className="flex w-full h-full justify-end items-center">
+              <motion.div
+                whileInView={"visible"}
+                className="w-[80%] flex flex-col justify-center items-center h-full"
+              >
+                <h2 className="text-5xl font-bold">LÍNGUAS</h2>
+                <div className=" mt-8 space-y-4">
+                  {languages.map((lng, index) => (
+                    <div className="w-64" key={index}>
+                      <motion.h3
+                        className="text-xl font-bold text-white"
+                        initial={{
+                          opacity: 0,
+                        }}
+                        variants={{
+                          visible: {
+                            opacity: 1,
+                            transition: {
+                              duration: 1,
+                              delay: 1,
+                            },
+                          },
+                        }}
+                      >
+                        {lng.title}
+                      </motion.h3>
+                      <div className="h-2 w-full bg-gray-200 rounded-full mt-2">
+                        <motion.div
+                          ref={colorRefsLangs[index]}
+                          className="h-full rounded-full "
+                          style={{ width: `${lng.level}%` }}
+                          initial={{
+                            scaleX: 0,
+                            originX: 0,
+                          }}
+                          variants={{
+                            visible: {
+                              scaleX: 1,
+                              transition: {
+                                duration: 1,
+                                delay: 1,
+                              },
+                            },
+                          }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+          )}
         </div>
       </div>
     </Section>
@@ -442,7 +489,6 @@ export const Interface = () => {
     <div className="flex flex-col items-center justify-center w-screen">
       <AboutSection />
       <SkillSection />
-      <ProjectsSection />
     </div>
   );
 };

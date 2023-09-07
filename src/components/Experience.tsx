@@ -3,9 +3,34 @@ import { Avatar } from "./3D/Avatar";
 import { useControls } from "leva";
 import { motion } from "framer-motion-3d";
 import { useEffect, useState } from "react";
+import { useStoreApp } from "../store";
+import { useMotionValue, animate } from "framer-motion";
+import { useFrame } from "@react-three/fiber";
+import { framerMotionConfig } from "../config";
 
 export const Experience = (props: any) => {
   const { section } = props;
+  const { content }: any = useStoreApp();
+
+  const cameraPositionX = useMotionValue();
+  const cameraLookAtX = useMotionValue();
+
+  useEffect(() => {
+    animate(cameraPositionX, section === 1 ? -5 : 0, {
+      type: "spring",
+      mass: 5,
+      stiffness: 100,
+      damping: 50,
+      restDelta: 0.0001,
+    });
+    animate(cameraLookAtX, section === 1 ? 30 : 0);
+  }, [section]);
+
+  useFrame((state) => {
+    state.camera.position.x = cameraPositionX.get();
+    state.camera.lookAt(cameraLookAtX.get(), 0, 0);
+  });
+
   const { animation }: any = useControls({
     animation: {
       value: "Idle",
@@ -19,7 +44,7 @@ export const Experience = (props: any) => {
     if (section === 0) {
       setAnimation2("Idle");
     } else {
-      setAnimation2("Dance");
+      setAnimation2("Idle");
     }
   }, [section]);
   console.log({ animation });
@@ -39,7 +64,6 @@ export const Experience = (props: any) => {
         <motion.group
           animate={{
             z: section === 0 ? 0 : -0.5,
-            x: section == 1 ? -3 : 0,
           }}
           rotation-x={-Math.PI / 2}
         >

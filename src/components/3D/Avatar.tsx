@@ -73,9 +73,13 @@ export function Avatar(props: JSX.IntrinsicElements["group"] | any) {
       //@ts-ignore
       const target = new THREE.Vector3(state.mouse.x, state.mouse.y, 1);
       //@ts-ignore
-      group?.current?.getObjectByName("Spine2").lookAt(target);
+      group?.current?.getObjectByName("Head").lookAt(target);
     }
   });
+
+  useEffect(() => {
+    console.log(group.current);
+  }, []);
 
   return (
     <group {...props} dispose={null} ref={group} scale={2.5}>

@@ -13,7 +13,6 @@ export const ScrollManager = (props: {
   console.log(data);
   const lastScroll = useRef(0);
   const isAnimating = useRef(false);
-
   data.fill.classList.add("top-0");
   data.fill.classList.add("absolute");
 
