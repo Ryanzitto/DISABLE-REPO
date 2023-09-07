@@ -11,26 +11,6 @@ import { framerMotionConfig } from "../config";
 export const Experience = (props: any) => {
   const { section } = props;
   const { content }: any = useStoreApp();
-
-  const cameraPositionX = useMotionValue();
-  const cameraLookAtX = useMotionValue();
-
-  useEffect(() => {
-    animate(cameraPositionX, section === 1 ? -5 : 0, {
-      type: "spring",
-      mass: 5,
-      stiffness: 100,
-      damping: 50,
-      restDelta: 0.0001,
-    });
-    animate(cameraLookAtX, section === 1 ? 30 : 0);
-  }, [section]);
-
-  useFrame((state) => {
-    state.camera.position.x = cameraPositionX.get();
-    state.camera.lookAt(cameraLookAtX.get(), 0, 0);
-  });
-
   const { animation }: any = useControls({
     animation: {
       value: "Idle",
@@ -42,7 +22,7 @@ export const Experience = (props: any) => {
 
   useEffect(() => {
     if (section === 0) {
-      setAnimation2("Idle");
+      setAnimation2("Dance");
     } else {
       setAnimation2("Idle");
     }

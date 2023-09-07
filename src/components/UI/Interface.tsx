@@ -168,7 +168,7 @@ const AboutSection = () => {
                 duration: 1,
                 delay: 0,
               }}
-              className="w-[90%] text-center lg:text-left flex flex-col justify-center items-center lg:items-start gap-6 text-md md:text-lg md:pt-4 text-white font-medium pt-8 min-[900px]:pl-8 lg:pl-6 lg:text-lg lg:pt-14 xl:text-xl xl:pl-8 2xl:text-3xl"
+              className="w-[90%] text-center lg:text-left flex flex-col justify-center items-center lg:items-start gap-6 text-md md:text-lg md:pt-4 text-white font-medium pt-8 min-[900px]:pl-8 lg:pl-6 lg:text-lg lg:pt-14 xl:text-lg xl:pl-8 2xl:text-3xl"
             >
               <p>
                 Sou um jovem desenvolvedor muito criativo, interessado em criar
@@ -229,7 +229,7 @@ const AboutSection = () => {
           >
             <p
               data-testid={"about2"}
-              className="w-[90%] md:text-lg lg:text-lg lg:text-right lg:pr-10 xl:text-xl 2xl:text-3xl"
+              className="w-[90%] md:text-lg lg:text-lg lg:text-right lg:pr-10 xl:text-lg 2xl:text-3xl"
             >
               Há cerca de 10 meses eu venho me dedicando aos estudos de
               programação 🧑‍💻, sempre aplicando em projetos pessoais os conceitos
@@ -312,13 +312,21 @@ const SkillSection = () => {
           <div className="w-full h-20 text-white font-black tracking-wider text-lg flex gap-4 justify-center items-center">
             <span
               onClick={() => setContent("skills")}
-              className="cursor-pointer"
+              className={`cursor-pointer ${
+                content === "skills"
+                  ? "border-b border-white/20"
+                  : "border-transparent"
+              }`}
             >
               HABILIDADES
             </span>
             <span
               onClick={() => setContent("projects")}
-              className="cursor-pointer"
+              className={`cursor-pointer border-transparent ${
+                content === "projects"
+                  ? "border-b border-white/20"
+                  : "border-transparent"
+              }`}
             >
               PROJETOS
             </span>
@@ -327,6 +335,18 @@ const SkillSection = () => {
             <div className="flex w-full h-full justify-center items-center">
               <motion.div
                 whileInView={"visible"}
+                initial={{
+                  opacity: 0,
+                }}
+                variants={{
+                  visible: {
+                    opacity: 1,
+                    transition: {
+                      duration: 1,
+                      delay: 0,
+                    },
+                  },
+                }}
                 className="w-1/2 flex flex-col justify-center items-center"
               >
                 <h2 className="text-5xl font-bold">HABILIDADES</h2>
@@ -376,6 +396,18 @@ const SkillSection = () => {
               </motion.div>
               <motion.div
                 whileInView={"visible"}
+                initial={{
+                  opacity: 0,
+                }}
+                variants={{
+                  visible: {
+                    opacity: 1,
+                    transition: {
+                      duration: 1,
+                      delay: 0,
+                    },
+                  },
+                }}
                 className="w-1/2 flex flex-col justify-center items-center"
               >
                 <h2 className="text-5xl font-bold">LÍNGUAS</h2>
@@ -429,6 +461,18 @@ const SkillSection = () => {
             <div className="flex w-full h-full justify-end items-center">
               <motion.div
                 whileInView={"visible"}
+                initial={{
+                  opacity: 0,
+                }}
+                variants={{
+                  visible: {
+                    opacity: 1,
+                    transition: {
+                      duration: 1,
+                      delay: 0,
+                    },
+                  },
+                }}
                 className="w-[80%] flex flex-col justify-center items-center h-full"
               >
                 <h2 className="text-5xl font-bold">LÍNGUAS</h2>
