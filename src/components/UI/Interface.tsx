@@ -67,23 +67,41 @@ const languages = [
 ];
 
 export const Card = (props) => {
-  const { url } = props;
-  const { desc } = props;
-  const { linkGithub } = props;
-  const { linkDeploy } = props;
+  const { url, desc, linkGithub, linkDeploy, techs } = props;
+
   return (
     <div className="w-1/3 h-full flex justify-center items-center">
-      <div className="bg-white/80 w-[90%] h-[90%] rounded-md flex flex-col justify-start ">
+      <div className="bg-white w-[90%] h-[90%] rounded-md flex flex-col justify-start ">
         <div className="w-full">
           <img className="rounded-t-md w-fit" src={url} />
         </div>
         <div className="w-full h-[30%] text-zinc-800 flex justify-center items-center font-medium text-sm">
-          <p className="w-[80%]">{desc}</p>
+          <p className="w-[80%] text-center">{desc}</p>
         </div>
-        <div className="w-full h-[30%]">
+        <div className="w-full h-[30%] flex flex-col gap-4 items-center">
           <div className="flex gap-4 w-full justify-center items-center">
-            <span className="text-zinc-800 font-black text-sm">GITHUB</span>
-            <span className="text-zinc-800 font-black text-sm">DEPLOY</span>
+            <button className="border-2 border-zinc-800/80 p-2 rounded-md">
+              <a
+                href={linkGithub}
+                target="_blank"
+                className="text-zinc-800/90 font-black text-md tracking-wider"
+              >
+                GITHUB
+              </a>
+            </button>
+
+            <button className=" border-2 border-zinc-800 bg-zinc-800 p-2 rounded-md">
+              <a
+                href={linkDeploy}
+                target="_blank"
+                className="text-white font-black text-md tracking-wider"
+              >
+                DEPLOY
+              </a>
+            </button>
+          </div>
+          <div className="w-[80%] flex flex-col justify-center items-center text-zinc-800 gap text-center">
+            <p className="text-zinc-800/80 font-extrabold">{techs}</p>
           </div>
         </div>
       </div>
@@ -336,26 +354,29 @@ const SkillSection = () => {
       desc: "Este projeto se trata de um jogo criado com o ecosistema ThreeJS, o objetivo é coletar as moedas e acumular pontos enquanto se desvia dos obstáculos que te jogam pra fora da plataforma!",
       linkGithub: "https://github.com/Ryanzitto/THREE-IDK",
       linkDeploy: "https://ryanzitto.github.io/THREE-IDK/",
+      techs: "THREEJS - R3F - REACT - TAILWIND - ZUSTAND - TYPESCRIPT",
     },
     {
       url: "/images/projeto1.png",
       desc: "Este projeto se trata de um jogo criado com o ecosistema ThreeJS, o objetivo é coletar as moedas e acumular pontos enquanto se desvia dos obstáculos que te jogam pra fora da plataforma!",
       linkGithub: "https://github.com/Ryanzitto/THREE-IDK",
       linkDeploy: "https://ryanzitto.github.io/THREE-IDK/",
+      techs: "THREEJS - R3F - REACT - TAILWIND - ZUSTAND - TYPESCRIPT",
     },
     {
       url: "/images/projeto1.png",
       desc: "Este projeto se trata de um jogo criado com o ecosistema ThreeJS, o objetivo é coletar as moedas e acumular pontos enquanto se desvia dos obstáculos que te jogam pra fora da plataforma!",
       linkGithub: "https://github.com/Ryanzitto/THREE-IDK",
       linkDeploy: "https://ryanzitto.github.io/THREE-IDK/",
+      techs: "THREEJS - R3F - REACT - TAILWIND - ZUSTAND - TYPESCRIPT",
     },
   ];
 
   return (
     <Section>
       <div className="h-full flex w-full gap-20 lg:gap-0 flex-col justify-center items-center text-white">
-        <div className="flex w-full h-full flex-col">
-          <div className="w-full h-20 text-white font-black tracking-wider text-lg flex gap-4 justify-center items-center">
+        <div className="flex w-full h-full flex-col justify-center items-center">
+          <div className="w-[88%] h-20 text-white font-black tracking-wider text-lg flex gap-4 justify-start pl-2 items-center">
             <span
               onClick={() => setContent("skills")}
               className={`cursor-pointer ${
@@ -416,7 +437,7 @@ const SkillSection = () => {
                       >
                         {skill.title}
                       </motion.h3>
-                      <div className="h-2 w-full bg-gray-200 rounded-full mt-2">
+                      <div className="h-2 w-full bg-gray-200 rounded-full mt-2 flex justify-start">
                         <motion.div
                           className="h-full rounded-full"
                           ref={colorRefsSkills[index]}
@@ -509,10 +530,12 @@ const SkillSection = () => {
                 whileInView={"visible"}
                 initial={{
                   opacity: 0,
+                  y: 300,
                 }}
                 variants={{
                   visible: {
                     opacity: 1,
+                    y: 0,
                     transition: {
                       duration: 1,
                       delay: 0,
@@ -528,6 +551,7 @@ const SkillSection = () => {
                       desc={projeto.desc}
                       linkGithub={projeto.linkGithub}
                       linkDeploy={projeto.linkDeploy}
+                      techs={projeto.techs}
                     />
                   );
                 })}
