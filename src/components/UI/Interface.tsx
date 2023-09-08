@@ -66,6 +66,31 @@ const languages = [
   },
 ];
 
+export const Card = (props) => {
+  const { url } = props;
+  const { desc } = props;
+  const { linkGithub } = props;
+  const { linkDeploy } = props;
+  return (
+    <div className="w-1/3 h-full flex justify-center items-center">
+      <div className="bg-white/80 w-[90%] h-[90%] rounded-md flex flex-col justify-start ">
+        <div className="w-full">
+          <img className="rounded-t-md w-fit" src={url} />
+        </div>
+        <div className="w-full h-[30%] text-zinc-800 flex justify-center items-center font-medium text-sm">
+          <p className="w-[80%]">{desc}</p>
+        </div>
+        <div className="w-full h-[30%]">
+          <div className="flex gap-4 w-full justify-center items-center">
+            <span className="text-zinc-800 font-black text-sm">GITHUB</span>
+            <span className="text-zinc-800 font-black text-sm">DEPLOY</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Section = (props: any) => {
   const { children } = props;
 
@@ -305,6 +330,27 @@ const SkillSection = () => {
     });
   }, [color, colorRefsSkills, colorRefsLangs]);
 
+  const projetos = [
+    {
+      url: "/images/projeto1.png",
+      desc: "Este projeto se trata de um jogo criado com o ecosistema ThreeJS, o objetivo é coletar as moedas e acumular pontos enquanto se desvia dos obstáculos que te jogam pra fora da plataforma!",
+      linkGithub: "https://github.com/Ryanzitto/THREE-IDK",
+      linkDeploy: "https://ryanzitto.github.io/THREE-IDK/",
+    },
+    {
+      url: "/images/projeto1.png",
+      desc: "Este projeto se trata de um jogo criado com o ecosistema ThreeJS, o objetivo é coletar as moedas e acumular pontos enquanto se desvia dos obstáculos que te jogam pra fora da plataforma!",
+      linkGithub: "https://github.com/Ryanzitto/THREE-IDK",
+      linkDeploy: "https://ryanzitto.github.io/THREE-IDK/",
+    },
+    {
+      url: "/images/projeto1.png",
+      desc: "Este projeto se trata de um jogo criado com o ecosistema ThreeJS, o objetivo é coletar as moedas e acumular pontos enquanto se desvia dos obstáculos que te jogam pra fora da plataforma!",
+      linkGithub: "https://github.com/Ryanzitto/THREE-IDK",
+      linkDeploy: "https://ryanzitto.github.io/THREE-IDK/",
+    },
+  ];
+
   return (
     <Section>
       <div className="h-full flex w-full gap-20 lg:gap-0 flex-col justify-center items-center text-white">
@@ -458,7 +504,7 @@ const SkillSection = () => {
             </div>
           )}
           {content === "projects" && (
-            <div className="flex w-full h-full justify-end items-center">
+            <div className="flex w-full h-full justify-center items-start">
               <motion.div
                 whileInView={"visible"}
                 initial={{
@@ -473,52 +519,18 @@ const SkillSection = () => {
                     },
                   },
                 }}
-                className="w-[80%] flex flex-col justify-center items-center h-full"
+                className="w-[90%] h-[95%] flex justify-center items-center h-full"
               >
-                <h2 className="text-5xl font-bold">LÍNGUAS</h2>
-                <div className=" mt-8 space-y-4">
-                  {languages.map((lng, index) => (
-                    <div className="w-64" key={index}>
-                      <motion.h3
-                        className="text-xl font-bold text-white"
-                        initial={{
-                          opacity: 0,
-                        }}
-                        variants={{
-                          visible: {
-                            opacity: 1,
-                            transition: {
-                              duration: 1,
-                              delay: 1,
-                            },
-                          },
-                        }}
-                      >
-                        {lng.title}
-                      </motion.h3>
-                      <div className="h-2 w-full bg-gray-200 rounded-full mt-2">
-                        <motion.div
-                          ref={colorRefsLangs[index]}
-                          className="h-full rounded-full "
-                          style={{ width: `${lng.level}%` }}
-                          initial={{
-                            scaleX: 0,
-                            originX: 0,
-                          }}
-                          variants={{
-                            visible: {
-                              scaleX: 1,
-                              transition: {
-                                duration: 1,
-                                delay: 1,
-                              },
-                            },
-                          }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                {projetos.map((projeto) => {
+                  return (
+                    <Card
+                      url={projeto.url}
+                      desc={projeto.desc}
+                      linkGithub={projeto.linkGithub}
+                      linkDeploy={projeto.linkDeploy}
+                    />
+                  );
+                })}
               </motion.div>
             </div>
           )}
