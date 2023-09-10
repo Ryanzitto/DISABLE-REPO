@@ -97,12 +97,12 @@ describe("Testing the animations", () => {
 });
 
 describe("Skill elements should be rendered", () => {
-  test("greetings should be in the screen", () => {
-    const { getByText } = render(<Interface />);
-    const skills = getByText("HABILIDADES");
+  test("HABILIDADES should be in the screen", () => {
+    const { getByTestId } = render(<Interface />);
+    const skills = getByTestId("HABILIDADES");
     expect(skills).toBeInTheDocument();
   });
-  test("greetings should be in the screen", () => {
+  test("LÍNGUAS should be in the screen", () => {
     const { getByText } = render(<Interface />);
     const lang = getByText("LÍNGUAS");
     expect(lang).toBeInTheDocument();

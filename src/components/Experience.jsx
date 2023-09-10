@@ -3,15 +3,10 @@ import { Avatar } from "./3D/Avatar";
 import { useControls } from "leva";
 import { motion } from "framer-motion-3d";
 import { useEffect, useState } from "react";
-import { useStoreApp } from "../store";
-import { useMotionValue, animate } from "framer-motion";
-import { useFrame } from "@react-three/fiber";
-import { framerMotionConfig } from "../config";
 
-export const Experience = (props: any) => {
+export const Experience = (props) => {
   const { section } = props;
-  const { content }: any = useStoreApp();
-  const { animation }: any = useControls({
+  const { animation } = useControls({
     animation: {
       value: "Idle",
       options: ["Idle", "Dance"],
