@@ -2,27 +2,14 @@ import { ContactShadows } from "@react-three/drei";
 import { Avatar } from "./3D/Avatar";
 import { useControls } from "leva";
 import { motion } from "framer-motion-3d";
-import { useEffect, useState } from "react";
 
-export const Experience = (props) => {
-  const { section } = props;
-  const { animation } = useControls({
+export const Experience = (props: any) => {
+  const { animation }: any = useControls({
     animation: {
       value: "Idle",
       options: ["Idle", "Dance"],
     },
   });
-
-  const [animation2, setAnimation2] = useState("Idle");
-
-  useEffect(() => {
-    if (section === 0) {
-      setAnimation2("Dance");
-    } else {
-      setAnimation2("Idle");
-    }
-  }, [section]);
-  console.log({ animation });
 
   return (
     <>
@@ -36,13 +23,8 @@ export const Experience = (props) => {
           resolution={256}
           color="#000000"
         />
-        <motion.group
-          animate={{
-            z: section === 0 ? 0 : -0.5,
-          }}
-          rotation-x={-Math.PI / 2}
-        >
-          <Avatar animation={animation2} />
+        <motion.group animate={{}} rotation-x={-Math.PI / 2}>
+          <Avatar animation={animation} />
         </motion.group>
       </group>
     </>

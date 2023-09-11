@@ -5,9 +5,9 @@ export const useStoreApp = create(
   persist(
     (set) => ({
       color: "#B922E2",
-      content: "skills",
+      page: "HOME",
       setColor: (payload: string) => set({ color: payload }),
-      setContent: (payload: string) => set({ content: payload }),
+      setPage: (payload: string) => set({ page: payload }),
     }),
     {
       name: "app-storage",
