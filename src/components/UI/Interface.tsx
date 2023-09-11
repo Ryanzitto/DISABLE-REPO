@@ -142,7 +142,7 @@ const AboutSection = () => {
     <Section>
       <div className="flex flex-col w-screen h-screen justify-center items-center">
         <Header />
-        <div className="lg:flex flex-col w-full h-full justify-center items-center">
+        <div className="flex lg:flex-row flex-col w-full h-full justify-center items-center">
           <div className="lg:w-1/2 w-full  lg:h-full h-1/2 flex justify-center items-center bg-red-600/10 lg:pl-10 text-white">
             <motion.div
               data-testid={"div"}
@@ -159,10 +159,10 @@ const AboutSection = () => {
                   },
                 },
               }}
-              className="w-full h-full flex justify-center items-center flex-col gap-2"
+              className="w-full h-full flex justify-center items-center lg:items-start flex-col gap-2 lg:mb-32"
             >
               <motion.header
-                initial={{ x: -250 }}
+                initial={{ x: -100 }}
                 whileInView={{ x: 0 }}
                 transition={{
                   duration: 1,
@@ -170,20 +170,24 @@ const AboutSection = () => {
                 }}
                 className=""
               >
-                <div className="flex flex-col justify-center text-sm font-black">
-                  <span className="lg:text-xl ">👋 OLÁ, EU SOU</span>
-                  <span className="lg:text-xl ">RYAN HENRIQUE</span>
+                <div className="flex flex-col justify-center text-sm font-black md:text-xl">
+                  <span className="lg:text-xl min-[1350px]:text-2xl">
+                    👋 OLÁ, EU SOU
+                  </span>
+                  <span className="lg:text-xl min-[1350px]:text-2xl">
+                    RYAN HENRIQUE
+                  </span>
                 </div>
               </motion.header>
-              <div className="w-full flex flex-col justify-center items-center text-center">
+              <div className="w-full flex flex-col justify-center items-center lg:items-start text-center">
                 <motion.div
-                  initial={{ x: -250 }}
+                  initial={{ x: -100 }}
                   whileInView={{ x: 0 }}
                   transition={{
                     duration: 1,
                     delay: 0,
                   }}
-                  className="w-full flex flex-col justify-center items-center text-4xl font-black"
+                  className="w-full flex flex-col justify-center items-center lg:items-start text-4xl md:text-5xl font-black lg:mt-4 min-[1350px]:text-6xl"
                 >
                   <div className="italic">
                     <h1 className="">DESENVOLVEDOR</h1>
@@ -201,13 +205,13 @@ const AboutSection = () => {
                 </motion.div>
                 <motion.div
                   data-testid={"about1"}
-                  initial={{ x: -250 }}
+                  initial={{ x: -100 }}
                   whileInView={{ x: 0 }}
                   transition={{
                     duration: 1,
                     delay: 0,
                   }}
-                  className="w-[80%] text-sm min-[400px]:text-md min-[450px]:pt-4"
+                  className="w-[80%] min-[1350px]:w-[90%] text-sm min-[400px]:text-md min-[450px]:pt-4 md:text-lg lg:text-left lg:mt-4 font-medium min-[1350px]:text-xl"
                 >
                   <p>
                     Sou um jovem desenvolvedor muito criativo, interessado em
@@ -226,7 +230,7 @@ const AboutSection = () => {
               </div>
             </motion.div>
           </div>
-          <div className="lg:w-1/2 w-full lg:h-full h-1/2 flex justify-center items-center bg-green-600/10">
+          <div className="lg:w-1/2 w-full lg:h-full h-1/2 flex justify-center items-center bg-green-600/10 lg:pr-10">
             <motion.div
               whileInView={"visible"}
               initial={{
@@ -241,7 +245,7 @@ const AboutSection = () => {
                   },
                 },
               }}
-              className="w-full h-full flex flex-col items-center justify-center"
+              className="w-full h-full flex flex-col items-center justify-center lg:mb-32"
             >
               <motion.div
                 initial={{ opacity: 0, x: 200 }}
@@ -250,18 +254,18 @@ const AboutSection = () => {
                   duration: 1,
                   delay: 0,
                 }}
-                className="text-white font-medium text-center md:text-center text-md flex flex-col items-center"
+                className="text-white font-medium text-center md:text-center text-md flex flex-col items-center lg:items-end"
               >
                 <p
                   data-testid={"about2"}
-                  className="w-[80%] text-sm min-[400px]:text-md "
+                  className="w-[80%] min-[1350px]:w-[90%] text-sm min-[400px]:text-md  md:text-lg lg:text-right min-[1350px]:text-xl"
                 >
                   Há cerca de 10 meses eu venho me dedicando aos estudos de
                   programação 🧑‍💻, sempre aplicando em projetos pessoais os
                   conceitos aprendidos. possuo habilidades no Frontend e
                   conhecimentos básicos de Backend.
                 </p>
-                <motion.div className="pt-4 flex flex-col items-center justify-center gap-4">
+                <motion.div className="pt-4 lg:pt-12 flex flex-col items-center lg:items-end justify-center gap-4 lg:gap-6 font-extrabold">
                   <motion.button
                     whileHover={{
                       x: 5,
@@ -561,7 +565,7 @@ const ProjectsSection = () => {
 const Header = () => {
   const { setPage, page }: any = useStoreApp();
   return (
-    <header className="w-full h-20 text-white font-black flex justify-center items-center">
+    <header className="w-full h-20 text-white font-black flex justify-center items-center z-10">
       <ul className="flex gap-6">
         <li>
           <span className="cursor-pointer" onClick={() => setPage("HOME")}>
