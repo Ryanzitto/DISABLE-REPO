@@ -94,7 +94,7 @@ export const Card = (props: any) => {
               <a
                 href={linkDeploy}
                 target="_blank"
-                className="text-white font-black text-sm tracking-wider"
+                className="text-white font-black text-sm lg:text-md tracking-wider"
               >
                 DEPLOY
               </a>
@@ -122,7 +122,7 @@ const Section = (props: any) => {
 };
 
 const AboutSection = () => {
-  const { color }: any = useStoreApp();
+  const { color, setColor }: any = useStoreApp();
 
   const [likeIsClicked, setLikeIsClicked] = useState<boolean>(false);
 
@@ -145,7 +145,7 @@ const AboutSection = () => {
       <div className="flex flex-col w-screen h-screen justify-center items-center">
         <Header />
         <div className="flex lg:flex-row flex-col w-full h-full justify-center items-center">
-          <div className="lg:w-1/2 w-full  lg:h-full h-1/2 flex justify-center items-center bg-red-600/10 lg:pl-10 text-white">
+          <div className="lg:w-1/2 w-full  lg:h-full h-1/2 flex justify-center items-center lg:pl-10 text-white">
             <motion.div
               data-testid={"div"}
               whileInView={"visible"}
@@ -232,7 +232,7 @@ const AboutSection = () => {
               </div>
             </motion.div>
           </div>
-          <div className="lg:w-1/2 w-full lg:h-full h-1/2 flex justify-center items-center bg-green-600/10 lg:pr-10">
+          <div className="lg:w-1/2 w-full lg:h-full h-1/2 flex justify-center items-center lg:pr-10">
             <motion.div
               whileInView={"visible"}
               initial={{
@@ -296,17 +296,29 @@ const AboutSection = () => {
                     <img className="w-6 opacity-80" src="images/github.png" />
                   </motion.button>
 
-                  <div className="flex md:text-2xl xl:text-2xl items-center justify-center gap-2 text-lg lg:text-xl">
-                    <img
-                      onClick={like}
-                      className="w-6 h-6 cursor-pointer"
-                      src={
-                        likeIsClicked === false
-                          ? "images/heart.png"
-                          : "images/heart-filled.png"
-                      }
-                    />
-                    <span>432 LIKES</span>
+                  <div className="flex flex-col md:text-2xl xl:text-2xl items-center justify-center gap-2  text-lg lg:text-xl">
+                    <div className="flex items-center gap-2 ">
+                      <img
+                        onClick={like}
+                        className="w-6 h-6 cursor-pointer"
+                        src={
+                          likeIsClicked === false
+                            ? "images/heart.png"
+                            : "images/heart-filled.png"
+                        }
+                      />
+                      <span>432 LIKES</span>
+                    </div>
+                    <div className="flex gap-2 w-full justify-end items-center">
+                      <span className="md:text-lg">COLOR:</span>
+                      <input
+                        data-testid={"input-color"}
+                        className="w-6 h-6  border-0 bg-transparent cursor-pointer"
+                        type="color"
+                        value={color}
+                        onChange={(e) => setColor(e.target.value)}
+                      />
+                    </div>
                   </div>
                 </motion.div>
               </motion.div>
@@ -525,11 +537,41 @@ const ProjectsSection = () => {
   return (
     <Section>
       <Header />
-      <div className="flex lg:flex-row flex-col w-full h-full justify-center items-center bg-red-500">
-        <div className="bg-pink-500 w-[95%] h-[90%] flex lg:flex-row flex-col">
-          {projetos.map((item) => {
+      <motion.div
+        whileInView={"visible"}
+        initial={{
+          opacity: 0,
+        }}
+        variants={{
+          visible: {
+            opacity: 1,
+            transition: {
+              duration: 1,
+              delay: 0,
+            },
+          },
+        }}
+        className="flex lg:flex-row flex-col w-full h-full justify-center items-center"
+      >
+        <div className="w-[95%] h-[90%] flex lg:flex-row flex-col">
+          {projetos.map((item, index) => {
             return (
-              <div key={item} className=" w-full h-1/3 lg:w-1/3 lg:h-full">
+              <motion.div
+                initial={{
+                  y: 100,
+                }}
+                variants={{
+                  visible: {
+                    y: 0,
+                    transition: {
+                      duration: 1,
+                      delay: 0.3 * index,
+                    },
+                  },
+                }}
+                key={item}
+                className=" w-full h-1/3 lg:w-1/3 lg:h-full"
+              >
                 <Card
                   url={item.url}
                   desc={item.desc}
@@ -537,31 +579,58 @@ const ProjectsSection = () => {
                   linkDeploy={item.linkDeploy}
                   techs={item.techs}
                 />
-              </div>
+              </motion.div>
             );
           })}
         </div>
-      </div>
+      </motion.div>
     </Section>
   );
 };
 
 const Header = () => {
-  const { setPage, page }: any = useStoreApp();
+  const { setPage, page, color }: any = useStoreApp();
+
+  const colorRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (colorRef.current) {
+      colorRef.current.style.backgroundColor = color;
+    }
+  }, [color]);
+
   return (
     <header className="w-full h-20 text-white font-black flex justify-center items-center z-10">
       <ul className="flex gap-6">
-        <li>
+        <li className="flex justify-center items-center flex-col">
+          {page === "HOME" && (
+            <div
+              ref={colorRef}
+              className="bg-red-500 w-2 h-2 rounded-full animate-pulse"
+            ></div>
+          )}
           <span className="cursor-pointer" onClick={() => setPage("HOME")}>
             INICIO
           </span>
         </li>
-        <li>
+        <li className="flex justify-center items-center flex-col">
+          {page === "SKILLS" && (
+            <div
+              ref={colorRef}
+              className="bg-red-500 w-2 h-2 rounded-full animate-pulse"
+            ></div>
+          )}
           <span className="cursor-pointer" onClick={() => setPage("SKILLS")}>
             HABILIDADES
           </span>
         </li>
-        <li>
+        <li className="flex justify-center items-center flex-col">
+          {page === "PROJECTS" && (
+            <div
+              ref={colorRef}
+              className="bg-red-500 w-2 h-2 rounded-full animate-pulse"
+            ></div>
+          )}
           <span className="cursor-pointer" onClick={() => setPage("PROJECTS")}>
             PROJETOS
           </span>
