@@ -2,14 +2,27 @@ import { ContactShadows } from "@react-three/drei";
 import { Avatar } from "./3D/Avatar";
 import { useControls } from "leva";
 import { motion } from "framer-motion-3d";
+import { useStoreApp } from "../store";
+import { useEffect, useState } from "react";
 
 export const Experience = (props: any) => {
-  const { animation }: any = useControls({
+  const { page }: any = useStoreApp();
+  const [animation2, setAnimation2] = useState<string>("");
+  const {}: any = useControls({
     animation: {
       value: "Idle",
       options: ["Idle", "Dance"],
     },
   });
+
+  useEffect(() => {
+    if (page === "HOME") {
+      setAnimation2("Dance");
+    }
+    if (page === "SKILLS") {
+      setAnimation2("Idle");
+    }
+  }, [page]);
 
   return (
     <>
@@ -24,7 +37,7 @@ export const Experience = (props: any) => {
           color="#000000"
         />
         <motion.group animate={{}} rotation-x={-Math.PI / 2}>
-          <Avatar animation={animation} />
+          <Avatar animation={animation2} />
         </motion.group>
       </group>
     </>

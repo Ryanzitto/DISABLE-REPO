@@ -70,7 +70,7 @@ export const Card = (props: any) => {
   const { url, desc, linkGithub, linkDeploy, techs } = props;
 
   return (
-    <div className="w-1/3 h-full flex justify-center items-center">
+    <div className="w-1/3 w-full h-[80%] flex justify-center items-center">
       <div className="bg-white w-[90%] h-[90%] rounded-md flex flex-col justify-start ">
         <div className="w-full">
           <img className="rounded-t-md w-fit" src={url} />
@@ -120,7 +120,7 @@ const Section = (props: any) => {
 };
 
 const AboutSection = () => {
-  const { color, setColor }: any = useStoreApp();
+  const { color }: any = useStoreApp();
 
   const [likeIsClicked, setLikeIsClicked] = useState<boolean>(false);
 
@@ -277,7 +277,7 @@ const AboutSection = () => {
                       href="https://www.linkedin.com/in/ryan-henrique-1b4075233/"
                       target="blank"
                     >
-                      VIEW MY LINKEDIN
+                      VER MEU LINKEDIN
                     </a>
                     <img className="w-6 opacity-80" src="images/linkedin.png" />
                   </motion.button>
@@ -289,7 +289,7 @@ const AboutSection = () => {
                     className="text-xs xl:text-xl md:text-lg bg-white p-3 text-zinc-700 rounded-md flex gap-2 tracking-wide justify-center items-center"
                   >
                     <a href="https://github.com/Ryanzitto/" target="blank">
-                      VIEW MY GITHUB
+                      VER MEU GITHUB
                     </a>
                     <img className="w-6 opacity-80" src="images/github.png" />
                   </motion.button>
@@ -365,7 +365,7 @@ const SkillSection = () => {
       <Header />
       <div className="h-full flex w-full gap-20 lg:gap-0 flex-col justify-center items-center text-white">
         <div className="flex w-full h-full flex-col justify-center items-center">
-          <div className="flex w-full h-full justify-center items-center">
+          <div className="flex flex-col lg:flex-row w-full h-full justify-start items-center gap-10 lg:gap-0 mt-6 lg:mt-0 lg:mb-20">
             <motion.div
               whileInView={"visible"}
               initial={{
@@ -382,7 +382,7 @@ const SkillSection = () => {
               }}
               className="w-1/2 flex flex-col justify-center items-center"
             >
-              <h2 className="text-5xl font-bold">HABILIDADES</h2>
+              <h2 className="font-bold text-2xl md:text-4xl">HABILIDADES</h2>
               <div className="mt-8 space-y-4">
                 {skills.map((skill, index) => (
                   <div className="w-64" key={index}>
@@ -396,7 +396,7 @@ const SkillSection = () => {
                           opacity: 1,
                           transition: {
                             duration: 1,
-                            delay: 1,
+                            delay: 0.2,
                           },
                         },
                       }}
@@ -417,7 +417,7 @@ const SkillSection = () => {
                             scaleX: 1,
                             transition: {
                               duration: 1,
-                              delay: 1,
+                              delay: 0.2,
                             },
                           },
                         }}
@@ -443,7 +443,7 @@ const SkillSection = () => {
               }}
               className="w-1/2 flex flex-col justify-center items-center"
             >
-              <h2 className="text-5xl font-bold">LÍNGUAS</h2>
+              <h2 className="text-2xl font-bold md:text-4xl">LÍNGUAS</h2>
               <div className=" mt-8 space-y-4">
                 {languages.map((lng, index) => (
                   <div className="w-64" key={index}>
@@ -457,7 +457,7 @@ const SkillSection = () => {
                           opacity: 1,
                           transition: {
                             duration: 1,
-                            delay: 1,
+                            delay: 0.2,
                           },
                         },
                       }}
@@ -478,7 +478,7 @@ const SkillSection = () => {
                             scaleX: 1,
                             transition: {
                               duration: 1,
-                              delay: 1,
+                              delay: 0.2,
                             },
                           },
                         }}
@@ -523,45 +523,11 @@ const ProjectsSection = () => {
   return (
     <Section>
       <Header />
-      <div className="h-full flex w-full gap-20 lg:gap-0 flex-col justify-center items-center text-white">
-        <div className="flex w-full h-full flex-col justify-center items-center">
-          <div className="flex w-full h-full justify-center items-start">
-            <motion.div
-              whileInView={"visible"}
-              initial={{
-                opacity: 0,
-                y: 300,
-              }}
-              variants={{
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  transition: {
-                    duration: 1,
-                    delay: 0,
-                  },
-                },
-              }}
-              className="w-[90%] h-[95%] flex justify-center items-center h-full"
-            >
-              {projetos.map((projeto) => {
-                return (
-                  <Card
-                    url={projeto.url}
-                    desc={projeto.desc}
-                    linkGithub={projeto.linkGithub}
-                    linkDeploy={projeto.linkDeploy}
-                    techs={projeto.techs}
-                  />
-                );
-              })}
-            </motion.div>
-          </div>
-        </div>
-      </div>
+      <div className="flex lg:flex-row flex-col w-full h-full justify-center items-center bg-red-500"></div>
     </Section>
   );
 };
+
 const Header = () => {
   const { setPage, page }: any = useStoreApp();
   return (
