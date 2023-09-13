@@ -70,38 +70,40 @@ export const Card = (props: any) => {
   const { url, desc, linkGithub, linkDeploy, techs } = props;
 
   return (
-    <div className="w-1/3 w-full h-[80%] flex justify-center items-center">
-      <div className="bg-white w-[90%] h-[90%] rounded-md flex flex-col justify-start ">
-        <div className="w-full">
+    <div className="w-full h-full flex justify-center items-center">
+      <div className="bg-white w-[90%] h-full max-h-[170px] lg:max-h-[650px] rounded-md flex lg:flex-col justify-start gap-4">
+        <div className="w-full hidden lg:flex">
           <img className="rounded-t-md w-fit" src={url} />
         </div>
-        <div className="w-full h-[30%] text-zinc-800 flex justify-center items-center font-medium text-sm">
+        <div className="w-full h-full lg:h-[30%] text-zinc-800 flex justify-center items-center font-medium text-xs lg:text-sm">
           <p className="w-[80%] text-center">{desc}</p>
         </div>
         <div className="w-full h-[30%] flex flex-col gap-4 items-center">
-          <div className="flex gap-4 w-full justify-center items-center">
-            <button className="border-2 border-zinc-800/80 p-2 rounded-md">
+          <div className="flex gap-4 w-full justify-center items-center mt-4 lg:mt-0">
+            <button className="border-2 border-zinc-800/80 p-1 lg:p-2 rounded-md">
               <a
                 href={linkGithub}
                 target="_blank"
-                className="text-zinc-800/90 font-black text-md tracking-wider"
+                className="text-zinc-800/90 font-black text-sm lg:text-md tracking-wider"
               >
                 GITHUB
               </a>
             </button>
 
-            <button className=" border-2 border-zinc-800 bg-zinc-800 p-2 rounded-md">
+            <button className=" border-2 border-zinc-800 bg-zinc-800  p-1 lg:p-2 rounded-md">
               <a
                 href={linkDeploy}
                 target="_blank"
-                className="text-white font-black text-md tracking-wider"
+                className="text-white font-black text-sm tracking-wider"
               >
                 DEPLOY
               </a>
             </button>
           </div>
           <div className="w-[80%] flex flex-col justify-center items-center text-zinc-800 gap text-center">
-            <p className="text-zinc-800/80 font-extrabold">{techs}</p>
+            <p className="text-zinc-800/80 font-extrabold text-sm lg:text-md">
+              {techs}
+            </p>
           </div>
         </div>
       </div>
@@ -523,7 +525,23 @@ const ProjectsSection = () => {
   return (
     <Section>
       <Header />
-      <div className="flex lg:flex-row flex-col w-full h-full justify-center items-center bg-red-500"></div>
+      <div className="flex lg:flex-row flex-col w-full h-full justify-center items-center bg-red-500">
+        <div className="bg-pink-500 w-[95%] h-[90%] flex lg:flex-row flex-col">
+          {projetos.map((item) => {
+            return (
+              <div key={item} className=" w-full h-1/3 lg:w-1/3 lg:h-full">
+                <Card
+                  url={item.url}
+                  desc={item.desc}
+                  linkGithub={item.linkGithub}
+                  linkDeploy={item.linkDeploy}
+                  techs={item.techs}
+                />
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </Section>
   );
 };
