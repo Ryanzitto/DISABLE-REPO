@@ -5,7 +5,7 @@ import { motion } from "framer-motion-3d";
 import { useStoreApp } from "../store";
 import { useEffect, useState } from "react";
 
-export const Experience = (props: any) => {
+export const Experience = () => {
   const { page }: any = useStoreApp();
   const [animation2, setAnimation2] = useState<string>("");
   const {}: any = useControls({

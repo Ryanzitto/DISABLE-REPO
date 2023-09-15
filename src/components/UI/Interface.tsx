@@ -60,20 +60,64 @@ const languages = [
     title: "Mineirês",
     level: 100,
   },
-  {
-    title: "Línguagem do amor",
-    level: 100,
-  },
 ];
 
+const projetos = [
+  {
+    url: "images/projeto1.png",
+    desc: "Este projeto se trata de um jogo criado com o ecosistema ThreeJS, o objetivo é coletar as moedas e acumular pontos enquanto se desvia dos obstáculos que te jogam pra fora da plataforma!",
+    linkGithub: "https://github.com/Ryanzitto/THREE-IDK",
+    linkDeploy: "https://ryanzitto.github.io/THREE-IDK/",
+    techs: "THREEJS - R3F - REACT - TAILWIND - ZUSTAND - TYPESCRIPT",
+    id: 0,
+  },
+  {
+    url: "images/projeto1.png",
+    desc: "Este projeto se trata de um jogo criado com o ecosistema ThreeJS, o objetivo é coletar as moedas e acumular pontos enquanto se desvia dos obstáculos que te jogam pra fora da plataforma!",
+    linkGithub: "https://github.com/Ryanzitto/THREE-IDK",
+    linkDeploy: "https://ryanzitto.github.io/THREE-IDK/",
+    techs: "THREEJS - R3F - REACT - TAILWIND - ZUSTAND - TYPESCRIPT",
+    id: 1,
+  },
+  {
+    url: "images/projeto1.png",
+    desc: "Este projeto se trata de um jogo criado com o ecosistema ThreeJS, o objetivo é coletar as moedas e acumular pontos enquanto se desvia dos obstáculos que te jogam pra fora da plataforma!",
+    linkGithub: "https://github.com/Ryanzitto/THREE-IDK",
+    linkDeploy: "https://ryanzitto.github.io/THREE-IDK/",
+    techs: "THREEJS - R3F - REACT - TAILWIND - ZUSTAND - TYPESCRIPT",
+    id: 2,
+  },
+];
 export const Card = (props: any) => {
   const { url, desc, linkGithub, linkDeploy, techs } = props;
 
+  const ref = useRef<HTMLButtonElement | null>(null);
+
+  const { color }: any = useStoreApp();
+
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.style.backgroundColor = color;
+      ref.current.style.border = color;
+    }
+  }, [color]);
+
   return (
-    <div className="w-full h-full flex justify-center items-center">
+    <motion.div
+      whileHover={{
+        scale: 1.05,
+        transition: { duration: 0.2 },
+      }}
+      className="w-full h-full flex justify-center items-center"
+    >
       <div className="bg-white w-[90%] h-full max-h-[170px] lg:max-h-[650px] rounded-md flex lg:flex-col justify-start gap-4">
         <div className="w-full hidden lg:flex">
-          <img className="rounded-t-md w-fit" src={url} />
+          <motion.img
+            initial={{ opacity: 0.9 }}
+            whileHover={{ opacity: 1 }}
+            className="rounded-t-md w-fit"
+            src={url}
+          />
         </div>
         <div className="w-full h-full lg:h-[30%] text-zinc-800 flex justify-center items-center font-medium text-xs lg:text-sm">
           <p className="w-[80%] text-center">{desc}</p>
@@ -90,7 +134,10 @@ export const Card = (props: any) => {
               </a>
             </button>
 
-            <button className=" border-2 border-zinc-800 bg-zinc-800  p-1 lg:p-2 rounded-md">
+            <button
+              className=" border-2 border-zinc-800 bg-zinc-800  p-1 lg:p-2 rounded-md"
+              ref={ref}
+            >
               <a
                 href={linkDeploy}
                 target="_blank"
@@ -107,7 +154,7 @@ export const Card = (props: any) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -164,8 +211,8 @@ const AboutSection = () => {
               className="w-full h-full flex justify-center items-center lg:items-start flex-col gap-2 lg:mb-32"
             >
               <motion.header
-                initial={{ x: -100 }}
-                whileInView={{ x: 0 }}
+                initial={{ y: -100 }}
+                whileInView={{ y: 0 }}
                 transition={{
                   duration: 1,
                   delay: 0,
@@ -183,8 +230,8 @@ const AboutSection = () => {
               </motion.header>
               <div className="w-full flex flex-col justify-center items-center lg:items-start text-center">
                 <motion.div
-                  initial={{ x: -100 }}
-                  whileInView={{ x: 0 }}
+                  initial={{ y: -100 }}
+                  whileInView={{ y: 0 }}
                   transition={{
                     duration: 1,
                     delay: 0,
@@ -207,8 +254,8 @@ const AboutSection = () => {
                 </motion.div>
                 <motion.div
                   data-testid={"about1"}
-                  initial={{ x: -100 }}
-                  whileInView={{ x: 0 }}
+                  initial={{ y: -100 }}
+                  whileInView={{ y: 0 }}
                   transition={{
                     duration: 1,
                     delay: 0,
@@ -250,8 +297,8 @@ const AboutSection = () => {
               className="w-full h-full flex flex-col items-center justify-center lg:mb-32"
             >
               <motion.div
-                initial={{ opacity: 0, x: 200 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: -100 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{
                   duration: 1,
                   delay: 0,
@@ -310,7 +357,7 @@ const AboutSection = () => {
                       <span>432 LIKES</span>
                     </div>
                     <div className="flex gap-2 w-full justify-end items-center">
-                      <span className="md:text-lg">COLOR:</span>
+                      <span className="md:text-lg tracking-wider">COR:</span>
                       <input
                         data-testid={"input-color"}
                         className="w-6 h-6  border-0 bg-transparent cursor-pointer"
@@ -349,30 +396,6 @@ const SkillSection = () => {
       }
     });
   }, [color, colorRefsSkills, colorRefsLangs]);
-
-  const projetos = [
-    {
-      url: "/images/projeto1.png",
-      desc: "Este projeto se trata de um jogo criado com o ecosistema ThreeJS, o objetivo é coletar as moedas e acumular pontos enquanto se desvia dos obstáculos que te jogam pra fora da plataforma!",
-      linkGithub: "https://github.com/Ryanzitto/THREE-IDK",
-      linkDeploy: "https://ryanzitto.github.io/THREE-IDK/",
-      techs: "THREEJS - R3F - REACT - TAILWIND - ZUSTAND - TYPESCRIPT",
-    },
-    {
-      url: "/images/projeto1.png",
-      desc: "Este projeto se trata de um jogo criado com o ecosistema ThreeJS, o objetivo é coletar as moedas e acumular pontos enquanto se desvia dos obstáculos que te jogam pra fora da plataforma!",
-      linkGithub: "https://github.com/Ryanzitto/THREE-IDK",
-      linkDeploy: "https://ryanzitto.github.io/THREE-IDK/",
-      techs: "THREEJS - R3F - REACT - TAILWIND - ZUSTAND - TYPESCRIPT",
-    },
-    {
-      url: "/images/projeto1.png",
-      desc: "Este projeto se trata de um jogo criado com o ecosistema ThreeJS, o objetivo é coletar as moedas e acumular pontos enquanto se desvia dos obstáculos que te jogam pra fora da plataforma!",
-      linkGithub: "https://github.com/Ryanzitto/THREE-IDK",
-      linkDeploy: "https://ryanzitto.github.io/THREE-IDK/",
-      techs: "THREEJS - R3F - REACT - TAILWIND - ZUSTAND - TYPESCRIPT",
-    },
-  ];
 
   return (
     <Section>
@@ -510,30 +533,6 @@ const SkillSection = () => {
 };
 
 const ProjectsSection = () => {
-  const projetos = [
-    {
-      url: "/images/projeto1.png",
-      desc: "Este projeto se trata de um jogo criado com o ecosistema ThreeJS, o objetivo é coletar as moedas e acumular pontos enquanto se desvia dos obstáculos que te jogam pra fora da plataforma!",
-      linkGithub: "https://github.com/Ryanzitto/THREE-IDK",
-      linkDeploy: "https://ryanzitto.github.io/THREE-IDK/",
-      techs: "THREEJS - R3F - REACT - TAILWIND - ZUSTAND - TYPESCRIPT",
-    },
-    {
-      url: "/images/projeto1.png",
-      desc: "Este projeto se trata de um jogo criado com o ecosistema ThreeJS, o objetivo é coletar as moedas e acumular pontos enquanto se desvia dos obstáculos que te jogam pra fora da plataforma!",
-      linkGithub: "https://github.com/Ryanzitto/THREE-IDK",
-      linkDeploy: "https://ryanzitto.github.io/THREE-IDK/",
-      techs: "THREEJS - R3F - REACT - TAILWIND - ZUSTAND - TYPESCRIPT",
-    },
-    {
-      url: "/images/projeto1.png",
-      desc: "Este projeto se trata de um jogo criado com o ecosistema ThreeJS, o objetivo é coletar as moedas e acumular pontos enquanto se desvia dos obstáculos que te jogam pra fora da plataforma!",
-      linkGithub: "https://github.com/Ryanzitto/THREE-IDK",
-      linkDeploy: "https://ryanzitto.github.io/THREE-IDK/",
-      techs: "THREEJS - R3F - REACT - TAILWIND - ZUSTAND - TYPESCRIPT",
-    },
-  ];
-
   return (
     <Section>
       <Header />
@@ -558,7 +557,7 @@ const ProjectsSection = () => {
             return (
               <motion.div
                 initial={{
-                  y: 100,
+                  y: -100,
                 }}
                 variants={{
                   visible: {
@@ -569,7 +568,7 @@ const ProjectsSection = () => {
                     },
                   },
                 }}
-                key={item}
+                key={item.id}
                 className=" w-full h-1/3 lg:w-1/3 lg:h-full"
               >
                 <Card
@@ -591,46 +590,57 @@ const ProjectsSection = () => {
 const Header = () => {
   const { setPage, page, color }: any = useStoreApp();
 
-  const colorRef = useRef<HTMLDivElement | null>(null);
+  const colorRef1 = useRef<HTMLDivElement | null>(null);
+  const colorRef2 = useRef<HTMLDivElement | null>(null);
+  const colorRef3 = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (colorRef.current) {
-      colorRef.current.style.backgroundColor = color;
+    if (colorRef1.current && page === "HOME") {
+      colorRef1.current.style.backgroundColor = color;
     }
-  }, [color]);
+    if (colorRef2.current && page === "SKILLS") {
+      colorRef2.current.style.backgroundColor = color;
+    }
+    if (colorRef3.current && page === "PROJECTS") {
+      colorRef3.current.style.backgroundColor = color;
+    }
+  }, [page, color]);
 
   return (
     <header className="w-full h-20 text-white font-black flex justify-center items-center z-10">
       <ul className="flex gap-6">
         <li className="flex justify-center items-center flex-col">
-          {page === "HOME" && (
-            <div
-              ref={colorRef}
-              className="bg-red-500 w-2 h-2 rounded-full animate-pulse"
-            ></div>
-          )}
+          <div
+            ref={colorRef1}
+            className={`bg-red-500 w-2 h-2 rounded-full animate-pulse ${
+              page === "HOME" ? "" : "bg-transparent"
+            }`}
+          ></div>
+
           <span className="cursor-pointer" onClick={() => setPage("HOME")}>
             INICIO
           </span>
         </li>
         <li className="flex justify-center items-center flex-col">
-          {page === "SKILLS" && (
-            <div
-              ref={colorRef}
-              className="bg-red-500 w-2 h-2 rounded-full animate-pulse"
-            ></div>
-          )}
+          <div
+            ref={colorRef2}
+            className={`bg-red-500 w-2 h-2 rounded-full animate-pulse ${
+              page === "SKILLS" ? "" : "bg-transparent"
+            }`}
+          ></div>
+
           <span className="cursor-pointer" onClick={() => setPage("SKILLS")}>
             HABILIDADES
           </span>
         </li>
         <li className="flex justify-center items-center flex-col">
-          {page === "PROJECTS" && (
-            <div
-              ref={colorRef}
-              className="bg-red-500 w-2 h-2 rounded-full animate-pulse"
-            ></div>
-          )}
+          <div
+            ref={colorRef3}
+            className={`bg-red-500 w-2 h-2 rounded-full animate-pulse ${
+              page === "PROJECTS" ? "" : "bg-transparent"
+            }`}
+          ></div>
+
           <span className="cursor-pointer" onClick={() => setPage("PROJECTS")}>
             PROJETOS
           </span>
@@ -641,7 +651,7 @@ const Header = () => {
 };
 
 export const Interface = () => {
-  const { color, page, setPage }: any = useStoreApp();
+  const { page }: any = useStoreApp();
   return (
     <div className="flex flex-col items-center justify-center w-screen">
       {page === "HOME" ? <AboutSection /> : null}
