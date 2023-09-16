@@ -47,8 +47,8 @@ describe("Home elements should be rendered", () => {
 
   test("buttons should be in the screen", () => {
     const { getByText } = render(<Interface />);
-    const buttonGithub = getByText("VIEW MY GITHUB");
-    const buttonLinkedin = getByText("VIEW MY LINKEDIN");
+    const buttonGithub = getByText("VER MEU GITHUB");
+    const buttonLinkedin = getByText("VER MEU LINKEDIN");
     expect(buttonGithub).toBeInTheDocument();
     expect(buttonLinkedin).toBeInTheDocument();
   });
@@ -98,7 +98,9 @@ describe("Testing the animations", () => {
 
 describe("Skill elements should be rendered", () => {
   test("HABILIDADES should be in the screen", () => {
-    const { getByTestId } = render(<Interface />);
+    const { getByTestId, getByText } = render(<Interface />);
+    const skillButton = getByText("HABILIDADES");
+    fireEvent.click(skillButton);
     const skills = getByTestId("HABILIDADES");
     expect(skills).toBeInTheDocument();
   });
@@ -106,5 +108,17 @@ describe("Skill elements should be rendered", () => {
     const { getByText } = render(<Interface />);
     const lang = getByText("LÍNGUAS");
     expect(lang).toBeInTheDocument();
+  });
+});
+
+describe("Projects elements should be rendered", () => {
+  test("the projects are displayed", () => {
+    const { getByTestId, getByText } = render(<Interface />);
+    const projectsButton = getByText("PROJETOS");
+    fireEvent.click(projectsButton);
+    const projeto1 = getByTestId("IDK GAME");
+    const projeto2 = getByTestId("R-AND-M");
+    expect(projeto1).toBeInTheDocument();
+    expect(projeto2).toBeInTheDocument();
   });
 });

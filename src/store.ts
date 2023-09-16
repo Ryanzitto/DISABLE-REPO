@@ -6,6 +6,8 @@ export const useStoreApp = create(
     (set) => ({
       color: "#B922E2",
       page: "HOME",
+      skillDisplayed: "Threejs / React Three Fiber",
+      setSkillDisplayed: (payload: string) => set({ skillDisplayed: payload }),
       setColor: (payload: string) => set({ color: payload }),
       setPage: (payload: string) => set({ page: payload }),
     }),

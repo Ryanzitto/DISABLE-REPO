@@ -1,29 +1,3 @@
-// Mobile:
-// Retrato (Vertical):
-// Largura: Menos de 600px (geralmente 320px a 480px)
-// Altura: Varia dependendo do dispositivo
-
-// Tablet:
-// Retrato (Vertical):
-// Largura: De 600px a 767px
-// Altura: Varia dependendo do dispositivo
-
-// Paisagem (Horizontal):
-// Largura: De 768px a 1023px
-// Altura: Varia dependendo do dispositivo
-
-// Desktop:
-// Largura: De 1024px a 1199px
-// Altura: Varia dependendo do monitor
-
-// Desktop Grande:
-// Largura: 1200px ou mais
-// Altura: Varia dependendo do monitor
-
-// Tela Grande (por exemplo, TVs e monitores de alta resolução):
-// Largura: 1920px ou mais
-// Altura: Varia dependendo do dispositivo
-
 import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import { useStoreApp } from "../../store";
@@ -32,6 +6,7 @@ const skills = [
   {
     title: "Threejs / React Three Fiber",
     level: 75,
+    desc: "Desde que tive contato com o ecosistema ThreeJS eu me apaixonei, tenho conhecimento básico relacionado e com isso consigo criar cenas com modelos 3D adcionar animações e interções dos usuarios, customizações e mais.",
   },
   {
     title: "React",
@@ -68,28 +43,23 @@ const projetos = [
     desc: "Este projeto se trata de um jogo criado com o ecosistema ThreeJS, o objetivo é coletar as moedas e acumular pontos enquanto se desvia dos obstáculos que te jogam pra fora da plataforma!",
     linkGithub: "https://github.com/Ryanzitto/THREE-IDK",
     linkDeploy: "https://ryanzitto.github.io/THREE-IDK/",
-    techs: "THREEJS - R3F - REACT - TAILWIND - ZUSTAND - TYPESCRIPT",
+    techs: "THREEJS - R3F - REACT - TAILWIND - ZUSTAND - TYPESCRIPT - JEST",
     id: 0,
+    name: "IDK GAME",
   },
   {
-    url: "images/projeto1.png",
-    desc: "Este projeto se trata de um jogo criado com o ecosistema ThreeJS, o objetivo é coletar as moedas e acumular pontos enquanto se desvia dos obstáculos que te jogam pra fora da plataforma!",
-    linkGithub: "https://github.com/Ryanzitto/THREE-IDK",
-    linkDeploy: "https://ryanzitto.github.io/THREE-IDK/",
-    techs: "THREEJS - R3F - REACT - TAILWIND - ZUSTAND - TYPESCRIPT",
+    url: "images/projeto2.png",
+    desc: "Este projeto se trata um site feito para fãs de rick and morty para revisitar conteúdos relacionados a série, podendo-se obter informações relacionada a personagens, locais, e epsódios.",
+    linkGithub: "https://github.com/Ryanzitto/Rickandmorty",
+    linkDeploy: "https://rickandmorty-7gm6b9xrx-ryanzitto.vercel.app/",
+    techs: "REACT - NEXTJS - TAILWIND - REDUX - TYPESCRIPT - JEST",
     id: 1,
-  },
-  {
-    url: "images/projeto1.png",
-    desc: "Este projeto se trata de um jogo criado com o ecosistema ThreeJS, o objetivo é coletar as moedas e acumular pontos enquanto se desvia dos obstáculos que te jogam pra fora da plataforma!",
-    linkGithub: "https://github.com/Ryanzitto/THREE-IDK",
-    linkDeploy: "https://ryanzitto.github.io/THREE-IDK/",
-    techs: "THREEJS - R3F - REACT - TAILWIND - ZUSTAND - TYPESCRIPT",
-    id: 2,
+    name: "R-AND-M",
   },
 ];
+
 export const Card = (props: any) => {
-  const { url, desc, linkGithub, linkDeploy, techs } = props;
+  const { url, desc, linkGithub, linkDeploy, techs, name } = props;
 
   const ref = useRef<HTMLButtonElement | null>(null);
 
@@ -109,8 +79,9 @@ export const Card = (props: any) => {
         transition: { duration: 0.2 },
       }}
       className="w-full h-full flex justify-center items-center"
+      data-testId={name}
     >
-      <div className="bg-white w-[90%] h-full max-h-[170px] lg:max-h-[650px] rounded-md flex lg:flex-col justify-start gap-4">
+      <div className="bg-white w-[90%] h-full max-h-[170px] lg:max-h-[650px] rounded-md flex lg:flex-col justify-start gap-4 border border-slate-300/10">
         <div className="w-full hidden lg:flex">
           <motion.img
             initial={{ opacity: 0.9 }}
@@ -356,7 +327,7 @@ const AboutSection = () => {
                       />
                       <span>432 LIKES</span>
                     </div>
-                    <div className="flex gap-2 w-full justify-end items-center">
+                    <div className="flex gap-2 w-full justify-center lg:justify-end items-center">
                       <span className="md:text-lg tracking-wider">COR:</span>
                       <input
                         data-testid={"input-color"}
@@ -378,7 +349,7 @@ const AboutSection = () => {
 };
 
 const SkillSection = () => {
-  const { color }: any = useStoreApp();
+  const { color, skillDisplayed, setSkillDisplayed }: any = useStoreApp();
   const colorRefsSkills = skills.map(() => useRef<HTMLDivElement | null>(null));
   const colorRefsLangs = languages.map(() =>
     useRef<HTMLDivElement | null>(null)
@@ -418,13 +389,20 @@ const SkillSection = () => {
                 },
               }}
               className="w-1/2 flex flex-col justify-center items-center"
+              onMouseLeave={() => setSkillDisplayed("")}
             >
-              <h2 className="font-bold text-2xl md:text-4xl">HABILIDADES</h2>
+              <h2
+                data-testid="HABILIDADES"
+                className="font-bold text-2xl md:text-4xl"
+              >
+                HABILIDADES
+              </h2>
               <div className="mt-8 space-y-4">
                 {skills.map((skill, index) => (
                   <div className="w-64" key={index}>
                     <motion.h3
-                      className="text-xl font-bold"
+                      onClick={() => setSkillDisplayed(skill.title)}
+                      className="text-xl font-bold cursor-pointer"
                       initial={{
                         opacity: 0,
                       }}
@@ -460,6 +438,28 @@ const SkillSection = () => {
                         }}
                       />
                     </div>
+                    {skillDisplayed === skill.title && (
+                      <motion.div
+                        whileInView={"visible"}
+                        initial={{
+                          opacity: 0,
+                        }}
+                        variants={{
+                          visible: {
+                            opacity: 1,
+                            transition: {
+                              duration: 1,
+                              delay: 0,
+                            },
+                          },
+                        }}
+                        className="p-4 w-full bg-white/70 mt-2 rounded-md"
+                      >
+                        <p className="text-sm text-zinc-800 font-medium">
+                          {skill.desc}
+                        </p>
+                      </motion.div>
+                    )}
                   </div>
                 ))}
               </div>
@@ -552,7 +552,7 @@ const ProjectsSection = () => {
         }}
         className="flex lg:flex-row flex-col w-full h-full justify-center items-center"
       >
-        <div className="w-[95%] h-[90%] flex lg:flex-row flex-col">
+        <div className="w-[95%] h-[90%] flex justify-center items-center lg:flex-row flex-col">
           {projetos.map((item, index) => {
             return (
               <motion.div
@@ -577,6 +577,7 @@ const ProjectsSection = () => {
                   linkGithub={item.linkGithub}
                   linkDeploy={item.linkDeploy}
                   techs={item.techs}
+                  name={item.name}
                 />
               </motion.div>
             );
