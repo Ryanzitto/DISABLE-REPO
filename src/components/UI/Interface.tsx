@@ -6,19 +6,22 @@ const skills = [
   {
     title: "Threejs / React Three Fiber",
     level: 75,
-    desc: "Desde que tive contato com o ecosistema ThreeJS eu me apaixonei, tenho conhecimento básico relacionado e com isso consigo criar cenas com modelos 3D adcionar animações e interções dos usuarios, customizações e mais.",
+    desc: "Desde que tive contato com o ecosistema ThreeJS eu me apaixonei, tenho conhecimento básico relacionado e com isso consigo criar cenas com modelos 3D, adcionar animações e interações com os  usuarios, customizações e mais.",
   },
   {
     title: "React",
     level: 80,
+    desc: "Conheci o react e não muito tempo mas já estou familiarizado com o funcionamente desse framework incrível! tenho experîencia em manejar os diversos hooks que a ferramenta disponibiliza e com isso eu consigo criar coisas fantásticas.",
   },
   {
     title: "Typescript",
     level: 60,
+    desc: "O Typescript é uma ferramenta poderosa, com os tipos é possível criar um software robusto e garantir a qualidade e escalabilidade do código, apesar de ainda estar aprimorando meu conhecimento nessa ferramenta, já me sinto seguro em utilizá-la.",
   },
   {
     title: "Nodejs",
     level: 40,
+    desc: "O node é um mundo pelo qual ainda preciso explorar com mais afinco, porém sei o básico de como usá-lo para criar APIS simples.",
   },
 ];
 
@@ -231,7 +234,7 @@ const AboutSection = () => {
                     duration: 1,
                     delay: 0,
                   }}
-                  className="w-[80%] min-[1350px]:w-[90%] text-sm min-[400px]:text-md min-[450px]:pt-4 md:text-lg lg:text-left lg:mt-4 font-medium min-[1350px]:text-xl"
+                  className="flex flex-col lg:gap-4 overflow-auto w-[80%] min-[1350px]:w-[90%] text-sm min-[400px]:text-md min-[450px]:mt-4 md:text-lg lg:text-left font-medium min-[1350px]:text-xl"
                 >
                   <p>
                     Sou um jovem desenvolvedor muito criativo, interessado em
@@ -355,6 +358,14 @@ const SkillSection = () => {
     useRef<HTMLDivElement | null>(null)
   );
 
+  const handleClick = (skill: string) => {
+    if (skillDisplayed === skill) {
+      setSkillDisplayed("");
+    } else {
+      setSkillDisplayed(skill);
+    }
+  };
+
   useEffect(() => {
     colorRefsSkills.forEach((ref) => {
       if (ref.current) {
@@ -401,7 +412,7 @@ const SkillSection = () => {
                 {skills.map((skill, index) => (
                   <div className="w-64" key={index}>
                     <motion.h3
-                      onClick={() => setSkillDisplayed(skill.title)}
+                      onClick={() => handleClick(skill.title)}
                       className="text-xl font-bold cursor-pointer"
                       initial={{
                         opacity: 0,
@@ -443,19 +454,21 @@ const SkillSection = () => {
                         whileInView={"visible"}
                         initial={{
                           opacity: 0,
+                          x: -50,
                         }}
                         variants={{
                           visible: {
                             opacity: 1,
+                            x: 0,
                             transition: {
                               duration: 1,
                               delay: 0,
                             },
                           },
                         }}
-                        className="p-4 w-full bg-white/70 mt-2 rounded-md"
+                        className="p-4 w-full bg-white/80 mt-2 rounded-md"
                       >
-                        <p className="text-sm text-zinc-800 font-medium">
+                        <p className="text-sm text-zinc-700 font-bold">
                           {skill.desc}
                         </p>
                       </motion.div>

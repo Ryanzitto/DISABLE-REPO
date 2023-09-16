@@ -25,21 +25,19 @@ export const Experience = () => {
   }, [page]);
 
   return (
-    <>
-      <group position={[0, -2.5, 0]}>
-        <ambientLight intensity={1} />
-        <ContactShadows
-          opacity={1}
-          scale={20}
-          blur={1}
-          far={10}
-          resolution={256}
-          color="#000000"
-        />
-        <motion.group animate={{}} rotation-x={-Math.PI / 2}>
-          <Avatar animation={animation2} />
-        </motion.group>
-      </group>
-    </>
+    <group position={[0, -2.5, 0]}>
+      <ambientLight intensity={1} />
+      <ContactShadows
+        opacity={1}
+        scale={20}
+        blur={1}
+        far={10}
+        resolution={256}
+        color="#000000"
+      />
+      <motion.group rotation-x={-Math.PI / 2}>
+        <Avatar animation={animation2} />
+      </motion.group>
+    </group>
   );
 };
