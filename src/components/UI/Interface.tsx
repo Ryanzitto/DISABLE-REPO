@@ -194,12 +194,8 @@ const AboutSection = () => {
                 className=""
               >
                 <div className="flex flex-col justify-center text-sm font-black md:text-xl">
-                  <span className="lg:text-xl min-[1350px]:text-2xl">
-                    👋 OLÁ, EU SOU
-                  </span>
-                  <span className="lg:text-xl min-[1350px]:text-2xl">
-                    RYAN HENRIQUE
-                  </span>
+                  <span>👋 OLÁ, EU SOU</span>
+                  <span>RYAN HENRIQUE</span>
                 </div>
               </motion.header>
               <div className="w-full flex flex-col justify-center items-center lg:items-start text-center">
@@ -234,7 +230,7 @@ const AboutSection = () => {
                     duration: 1,
                     delay: 0,
                   }}
-                  className="flex flex-col lg:gap-4 overflow-auto w-[80%] min-[1350px]:w-[90%] text-sm min-[400px]:text-md min-[450px]:mt-4 md:text-lg lg:text-left font-medium min-[1350px]:text-xl"
+                  className="flex flex-col lg:gap-4 overflow-auto w-[80%] min-[1350px]:w-[90%] text-sm min-[400px]:text-md min-[450px]:mt-4 md:text-lg lg:text-left font-medium min-[1350px]:text-lg"
                 >
                   <p>
                     Sou um jovem desenvolvedor muito criativo, interessado em
@@ -281,7 +277,7 @@ const AboutSection = () => {
               >
                 <p
                   data-testid={"about2"}
-                  className="w-[80%] min-[1350px]:w-[90%] text-sm min-[400px]:text-md  md:text-lg lg:text-right min-[1350px]:text-xl"
+                  className="w-[80%] min-[1350px]:w-[90%] text-sm min-[400px]:text-md  md:text-lg lg:text-right min-[1350px]:text-lg"
                 >
                   Há cerca de 10 meses eu venho me dedicando aos estudos de
                   programação 🧑‍💻, sempre aplicando em projetos pessoais os
@@ -399,7 +395,7 @@ const SkillSection = () => {
                   },
                 },
               }}
-              className="w-1/2 flex flex-col justify-center items-center"
+              className="w-1/2 flex flex-col justify-start items-center"
               onMouseLeave={() => setSkillDisplayed("")}
             >
               <h2
@@ -413,7 +409,7 @@ const SkillSection = () => {
                   <div className="w-64" key={index}>
                     <motion.h3
                       onClick={() => handleClick(skill.title)}
-                      className="text-xl font-bold cursor-pointer"
+                      className="text-xl font-bold cursor-pointer transition-colors hover:text-white/60"
                       initial={{
                         opacity: 0,
                       }}
@@ -454,23 +450,23 @@ const SkillSection = () => {
                         whileInView={"visible"}
                         initial={{
                           opacity: 0,
-                          x: -50,
+                          y: 50,
+                          scale: 0.9,
                         }}
                         variants={{
                           visible: {
                             opacity: 1,
-                            x: 0,
+                            y: 0,
+                            scale: 1,
                             transition: {
                               duration: 1,
                               delay: 0,
                             },
                           },
                         }}
-                        className="p-4 w-full bg-white/80 mt-2 rounded-md"
+                        className="p-4 w-full bg-white/10 backdrop-blur-sm mt-4 rounded-md border border-slate-300/30"
                       >
-                        <p className="text-sm text-zinc-700 font-bold">
-                          {skill.desc}
-                        </p>
+                        <p className="text-xs font-bold">{skill.desc}</p>
                       </motion.div>
                     )}
                   </div>
