@@ -71,18 +71,18 @@ export const Card = (props: any) => {
   useEffect(() => {
     if (ref.current) {
       ref.current.style.backgroundColor = color;
-      ref.current.style.border = color;
+      ref.current.style.border = `2px solid ${color}`;
     }
   }, [color]);
 
   return (
     <motion.div
       whileHover={{
-        scale: 1.05,
-        transition: { duration: 0.2 },
+        scale: 1.02,
+        transition: { duration: 0.1 },
       }}
       className="w-full h-full flex justify-center items-center"
-      data-testId={name}
+      data-testids={name}
     >
       <div className="bg-white w-[90%] h-full max-h-[170px] lg:max-h-[650px] rounded-md flex lg:flex-col justify-start gap-4 border border-slate-300/10">
         <div className="w-full hidden lg:flex">
@@ -98,7 +98,14 @@ export const Card = (props: any) => {
         </div>
         <div className="w-full h-[30%] flex flex-col gap-4 items-center">
           <div className="flex gap-4 w-full justify-center items-center mt-4 lg:mt-0">
-            <button className="border-2 border-zinc-800/80 p-1 lg:p-2 rounded-md">
+            <motion.button
+              initial={{ y: 0 }}
+              whileHover={{
+                y: -5,
+                transition: { duration: 0.5 },
+              }}
+              className="border-2 border-zinc-800/80 p-1 lg:p-2 rounded-md"
+            >
               <a
                 href={linkGithub}
                 target="_blank"
@@ -106,9 +113,14 @@ export const Card = (props: any) => {
               >
                 GITHUB
               </a>
-            </button>
+            </motion.button>
 
-            <button
+            <motion.button
+              initial={{ y: 0 }}
+              whileHover={{
+                y: -5,
+                transition: { duration: 0.5 },
+              }}
               className=" border-2 border-zinc-800 bg-zinc-800  p-1 lg:p-2 rounded-md"
               ref={ref}
             >
@@ -117,9 +129,9 @@ export const Card = (props: any) => {
                 target="_blank"
                 className="text-white font-black text-sm lg:text-md tracking-wider"
               >
-                DEPLOY
+                VER SITE
               </a>
-            </button>
+            </motion.button>
           </div>
           <div className="w-[80%] flex flex-col justify-center items-center text-zinc-800 gap text-center">
             <p className="text-zinc-800/80 font-extrabold text-sm lg:text-md">
@@ -168,7 +180,7 @@ const AboutSection = () => {
         <div className="flex lg:flex-row flex-col w-full h-full justify-center items-center">
           <div className="lg:w-1/2 w-full  lg:h-full h-1/2 flex justify-center items-center lg:pl-10 text-white">
             <motion.div
-              data-testid={"div"}
+              data-testids={"div"}
               whileInView={"visible"}
               initial={{
                 opacity: 0,
@@ -223,7 +235,7 @@ const AboutSection = () => {
                   </div>
                 </motion.div>
                 <motion.div
-                  data-testid={"about1"}
+                  data-testids={"about1"}
                   initial={{ y: -100 }}
                   whileInView={{ y: 0 }}
                   transition={{
@@ -276,7 +288,7 @@ const AboutSection = () => {
                 className="text-white font-medium text-center md:text-center text-md flex flex-col items-center lg:items-end"
               >
                 <p
-                  data-testid={"about2"}
+                  data-testids={"about2"}
                   className="w-[80%] min-[1350px]:w-[90%] text-sm min-[400px]:text-md  md:text-lg lg:text-right min-[1350px]:text-lg"
                 >
                   Há cerca de 10 meses eu venho me dedicando aos estudos de
@@ -329,7 +341,7 @@ const AboutSection = () => {
                     <div className="flex gap-2 w-full justify-center lg:justify-end items-center">
                       <span className="md:text-lg tracking-wider">COR:</span>
                       <input
-                        data-testid={"input-color"}
+                        data-testids={"input-color"}
                         className="w-6 h-6  border-0 bg-transparent cursor-pointer"
                         type="color"
                         value={color}
@@ -399,7 +411,7 @@ const SkillSection = () => {
               onMouseLeave={() => setSkillDisplayed("")}
             >
               <h2
-                data-testid="HABILIDADES"
+                data-testids="HABILIDADES"
                 className="font-bold text-2xl md:text-4xl"
               >
                 HABILIDADES
@@ -459,7 +471,7 @@ const SkillSection = () => {
                             y: 0,
                             scale: 1,
                             transition: {
-                              duration: 1,
+                              duration: 0.2,
                               delay: 0,
                             },
                           },
@@ -572,8 +584,8 @@ const ProjectsSection = () => {
                   visible: {
                     y: 0,
                     transition: {
-                      duration: 1,
-                      delay: 0.3 * index,
+                      duration: 0.5,
+                      delay: 0.2 * index,
                     },
                   },
                 }}
@@ -627,7 +639,10 @@ const Header = () => {
             }`}
           ></div>
 
-          <span className="cursor-pointer" onClick={() => setPage("HOME")}>
+          <span
+            className="cursor-pointer tracking-widest"
+            onClick={() => setPage("HOME")}
+          >
             INICIO
           </span>
         </li>
@@ -639,7 +654,10 @@ const Header = () => {
             }`}
           ></div>
 
-          <span className="cursor-pointer" onClick={() => setPage("SKILLS")}>
+          <span
+            className="cursor-pointer tracking-widest"
+            onClick={() => setPage("SKILLS")}
+          >
             HABILIDADES
           </span>
         </li>
@@ -651,7 +669,10 @@ const Header = () => {
             }`}
           ></div>
 
-          <span className="cursor-pointer" onClick={() => setPage("PROJECTS")}>
+          <span
+            className="cursor-pointer tracking-widest"
+            onClick={() => setPage("PROJECTS")}
+          >
             PROJETOS
           </span>
         </li>
