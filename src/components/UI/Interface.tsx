@@ -82,7 +82,7 @@ export const Card = (props: any) => {
         transition: { duration: 0.1 },
       }}
       className="w-full h-full flex justify-center items-center"
-      data-testids={name}
+      data-testid={name}
     >
       <div className="bg-white w-[90%] h-full max-h-[170px] lg:max-h-[650px] rounded-md flex lg:flex-col justify-start gap-4 border border-slate-300/10">
         <div className="w-full hidden lg:flex">
@@ -108,6 +108,7 @@ export const Card = (props: any) => {
             >
               <a
                 href={linkGithub}
+                data-testid={linkGithub}
                 target="_blank"
                 className="text-zinc-800/90 font-black text-sm lg:text-md tracking-wider"
               >
@@ -126,6 +127,7 @@ export const Card = (props: any) => {
             >
               <a
                 href={linkDeploy}
+                data-testid={linkDeploy}
                 target="_blank"
                 className="text-white font-black text-sm lg:text-md tracking-wider"
               >
@@ -180,7 +182,7 @@ const AboutSection = () => {
         <div className="flex lg:flex-row flex-col w-full h-full justify-center items-center">
           <div className="lg:w-1/2 w-full  lg:h-full h-1/2 flex justify-center items-center lg:pl-10 text-white">
             <motion.div
-              data-testids={"div"}
+              data-testid={"div"}
               whileInView={"visible"}
               initial={{
                 opacity: 0,
@@ -235,7 +237,7 @@ const AboutSection = () => {
                   </div>
                 </motion.div>
                 <motion.div
-                  data-testids={"about1"}
+                  data-testid={"about1"}
                   initial={{ y: -100 }}
                   whileInView={{ y: 0 }}
                   transition={{
@@ -288,7 +290,7 @@ const AboutSection = () => {
                 className="text-white font-medium text-center md:text-center text-md flex flex-col items-center lg:items-end"
               >
                 <p
-                  data-testids={"about2"}
+                  data-testid={"about2"}
                   className="w-[80%] min-[1350px]:w-[90%] text-sm min-[400px]:text-md  md:text-lg lg:text-right min-[1350px]:text-lg"
                 >
                   Há cerca de 10 meses eu venho me dedicando aos estudos de
@@ -341,7 +343,7 @@ const AboutSection = () => {
                     <div className="flex gap-2 w-full justify-center lg:justify-end items-center">
                       <span className="md:text-lg tracking-wider">COR:</span>
                       <input
-                        data-testids={"input-color"}
+                        data-testid={"input-color"}
                         className="w-6 h-6  border-0 bg-transparent cursor-pointer"
                         type="color"
                         value={color}
@@ -411,7 +413,7 @@ const SkillSection = () => {
               onMouseLeave={() => setSkillDisplayed("")}
             >
               <h2
-                data-testids="HABILIDADES"
+                data-testid="HABILIDADES"
                 className="font-bold text-2xl md:text-4xl"
               >
                 HABILIDADES

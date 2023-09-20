@@ -122,3 +122,58 @@ describe("Projects elements should be rendered", () => {
     expect(projeto2).toBeInTheDocument();
   });
 });
+
+describe("Testing interactions on projects elements", () => {
+  test('O link tem o atributo target="_blank" e redireciona para a URL correta', () => {
+    const { getByTestId, getByText } = render(<Interface />);
+    const projectsButton = getByText("PROJETOS");
+    fireEvent.click(projectsButton);
+    const linkCorreto = "https://github.com/Ryanzitto/THREE-IDK";
+    const link = getByTestId(linkCorreto);
+
+    // Verifica se o atributo target é "_blank"
+    expect(link).toHaveAttribute("target", "_blank");
+
+    // Verifica se a URL é a esperada
+    expect(link).toHaveAttribute("href", linkCorreto);
+  });
+  test('O link tem o atributo target="_blank" e redireciona para a URL correta', () => {
+    const { getByTestId, getByText } = render(<Interface />);
+    const projectsButton = getByText("PROJETOS");
+    fireEvent.click(projectsButton);
+    const linkCorreto = "https://ryanzitto.github.io/THREE-IDK/";
+    const link = getByTestId(linkCorreto);
+
+    // Verifica se o atributo target é "_blank"
+    expect(link).toHaveAttribute("target", "_blank");
+
+    // Verifica se a URL é a esperada
+    expect(link).toHaveAttribute("href", linkCorreto);
+  });
+  test('O link tem o atributo target="_blank" e redireciona para a URL correta', () => {
+    const { getByTestId, getByText } = render(<Interface />);
+    const projectsButton = getByText("PROJETOS");
+    fireEvent.click(projectsButton);
+    const linkCorreto = "https://ryanzitto.github.io/THREE-IDK/";
+    const link = getByTestId(linkCorreto);
+
+    // Verifica se o atributo target é "_blank"
+    expect(link).toHaveAttribute("target", "_blank");
+
+    // Verifica se a URL é a esperada
+    expect(link).toHaveAttribute("href", linkCorreto);
+  });
+  test('O link tem o atributo target="_blank" e redireciona para a URL correta', () => {
+    const { getByTestId, getByText } = render(<Interface />);
+    const projectsButton = getByText("PROJETOS");
+    fireEvent.click(projectsButton);
+    const linkCorreto = "https://rickandmorty-7gm6b9xrx-ryanzitto.vercel.app/";
+    const link = getByTestId(linkCorreto);
+
+    // Verifica se o atributo target é "_blank"
+    expect(link).toHaveAttribute("target", "_blank");
+
+    // Verifica se a URL é a esperada
+    expect(link).toHaveAttribute("href", linkCorreto);
+  });
+});
